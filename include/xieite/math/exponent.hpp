@@ -3,7 +3,7 @@
 #include <type_traits>
 #include "../concepts/arithmetic.hpp"
 #include "../containers/maybe_copy_assignable.hpp"
-#include "../containers/maybe_move_Assignable.hpp"
+#include "../containers/maybe_move_assignable.hpp"
 #include "../math/power.hpp"
 
 namespace xieite::math {

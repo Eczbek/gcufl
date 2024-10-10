@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Array>
+#include <array>
 #include <bitset>
 #include <concepts>
 #include <cstddef>

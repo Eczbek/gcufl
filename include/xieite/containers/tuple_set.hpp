@@ -3,7 +3,7 @@
 #include <concepts>
 #include <initializer_list>
 #include <tuple>
-#include <utility
+#include <utility>
 #include "../functors/unroll.hpp"
 #include "../preprocessor/arrow.hpp"
 #include "../preprocessor/forward.hpp"
@@ -24,11 +24,11 @@ namespace xieite::containers {
 
 		template<std::convertible_to<std::tuple<FirstKey, RestKeys...>> KeysReference>
 		constexpr void insert(KeysReference&& keys)
-		XIEITE_ARROW_BASE(xieite::functors::unroll<RestKeys...>([&keys]<std::size_t... i> XIEITE_ARROW(this->set[std::get<0>(keys)].insert(std::make_tuple(std::get<i + 1>(keys)...)))))
+		XIEITE_ARROW_BASE(xieite::functors::unroll<RestKeys...>([this, &keys]<std::size_t... i> XIEITE_ARROW(this->set[std::get<0>(keys)].insert(std::make_tuple(std::get<i + 1>(keys)...)))))
 
 		template<std::convertible_to<std::tuple<FirstKey, RestKeys...>> KeysReference>
 		[[nodiscard]] constexpr bool contains(KeysReference&& keys) const
-		XIEITE_ARROW_BASE(this->set.contains(std::get<0>(keys)) && xieite::functors::unroll<RestKeys...>([&keys]<std::size_t... i> XIEITE_ARROW(this->set.at(std::get<0>(keys)).contains(std::make_tuple(std::get<i + 1>(keys)...)))))
+		XIEITE_ARROW_BASE(this->set.contains(std::get<0>(keys)) && xieite::functors::unroll<RestKeys...>([this, &keys]<std::size_t... i> XIEITE_ARROW(this->set.at(std::get<0>(keys)).contains(std::make_tuple(std::get<i + 1>(keys)...)))))
 
 	private:
 		Container<xieite::containers::TupleSet<Container, std::tuple<RestKeys...>>> set;

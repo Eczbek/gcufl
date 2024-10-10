@@ -5,11 +5,9 @@
 #include <tuple>
 #include <type_traits>
 #include <utility>
-
-#include std
-#include "../concepts/Hashable.hpp"
-#include :functors.unroll.hpp"
-#include :hashes.combine;
+#include "../concepts/hashable.hpp"
+#include "../functors/unroll.hpp"
+#include "../hashes/combine.hpp"
 
 template<typename Functor, typename... Arguments>
 requires(std::invocable<Functor, Arguments...>)
