@@ -4,10 +4,10 @@
 #include "../functors/counter.hpp"
 
 namespace XIEITE_DETAIL {
-	constexpr auto identifierCounterTag = [] {};
+	using TypeIdentifierCounter = xieite::functors::Counter<>;
 }
 
-namespace xieite::types {
+export namespace xieite::types {
 	template<typename>
-	constexpr std::size_t identifier = xieite::functors::counter<XIEITE_DETAIL::identifierCounterTag>();
+	constexpr std::size_t identifier = XIEITE_DETAIL::TypeIdentifierCounter::advance();
 }

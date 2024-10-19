@@ -1,13 +1,13 @@
 #pragma once
 
-#include "../preprocessor/language_standard.hpp"
+#include "../preprocessor/language.hpp"
 
-#if XIEITE_LANGUAGE_STANDARD_CPP_2023
+#if XIEITE_LANGUAGE_CPP >= XIEITE_LANGUAGE_CPP_2023
 #	include <utility>
 
-#	define XIEITE_UNREACHABLE() (::std::unreachable())
+#	define XIEITE_UNREACHABLE() ::std::unreachable()
 #else
-#	include "../preprocessor/compiler.hpp"
+#	include <xieite/compiler.hpp>
 
 #	if XIEITE_COMPILER_TYPE_GCC || XIEITE_COMPILER_TYPE_CLANG
 #		define XIEITE_UNREACHABLE() __builtin_unreachable()

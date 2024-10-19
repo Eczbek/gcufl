@@ -15,9 +15,11 @@ namespace xieite::literals::radix {
 				case 'b':
 				case 'B':
 					return 2;
+				default:
+					return 8;
 			}
-			return 8;
+		} else {
+			return 10;
 		}
-		return 10;
 	}
 }
