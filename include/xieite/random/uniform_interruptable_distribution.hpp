@@ -1,11 +1,11 @@
 #pragma once
 
 #include <algorithm>
-#include <cmath>
 #include <concepts>
 #include <random>
 #include <ranges>
 #include <stdexcept>
+#include <vector>
 #include "../concepts/arithmetic.hpp"
 #include "../math/interval.hpp"
 #include "../math/difference.hpp"

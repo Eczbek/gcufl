@@ -313,6 +313,7 @@
 #include "xieite/strings/before.hpp"
 #include "xieite/strings/between.hpp"
 #include "xieite/strings/characters.hpp"
+#include "xieite/strings/compare_ignore_case.hpp"
 #include "xieite/strings/find_number.hpp"
 #include "xieite/strings/from_roman_numerals.hpp"
 #include "xieite/strings/is_digit.hpp"

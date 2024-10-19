@@ -3,7 +3,7 @@
 #include "../preprocessor/arrow.hpp"
 #include "../preprocessor/forward.hpp"
 
-export namespace xieite::functors {
+namespace xieite::functors {
 	template<std::integral auto count>
 	constexpr void repeat(auto&& functor, auto&&... arguments)
 	XIEITE_ARROW_BASE(([&arguments...]<auto... i>(std::integer_sequence<decltype(count), i...>) XIEITE_ARROW((..., functor.template operator()<i>(XIEITE_FORWARD(arguments)...)))))

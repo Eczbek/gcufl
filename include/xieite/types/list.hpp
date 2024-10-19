@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cmath>
+#include <algorithm>
 #include <concepts>
 #include <cstddef>
 #include <type_traits>
@@ -43,15 +43,13 @@ namespace xieite::types {
 
 		template<std::size_t index>
 		requires(index < sizeof...(Types))
-		using At = decltype(
-			xieite::functors::unroll<Types...>(
-				[]<std::size_t... i> {
-					return xieite::functors::Visitor([](xieite::types::Value<i>) {
-						return std::type_identity<Types>();
-					}...)(xieite::types::Value<index>());
-				}
-			)
-		)::type;
+		using At = decltype(xieite::functors::unroll<Types...>(
+			[]<std::size_t... i> {
+				return xieite::functors::Visitor([](xieite::types::Value<i>) {
+					return std::type_identity<Types>();
+				}...)(xieite::types::Value<index>());
+			}
+		))::type;
 
 		static constexpr auto apply(auto&& callback)
 		XIEITE_ARROW(XIEITE_FORWARD(callback).template operator()<Types...>())
@@ -75,21 +73,17 @@ namespace xieite::types {
 		using Append = List<Types..., OtherTypes...>;
 
 		template<typename Range>
-		using AppendRange = decltype(
-			([]<template<typename...> typename Template, typename... OtherTypes>(std::type_identity<Template<OtherTypes...>>) {
-				return std::type_identity<List::Append<OtherTypes...>>();
-			})(std::type_identity<Range>())
-		)::type;
+		using AppendRange = decltype(([]<template<typename...> typename Template, typename... OtherTypes>(std::type_identity<Template<OtherTypes...>>) {
+			return std::type_identity<List::Append<OtherTypes...>>();
+		})(std::type_identity<Range>()))::type;
 
 		template<typename... OtherTypes>
 		using Prepend = List<OtherTypes..., Types...>;
 
 		template<typename Range>
-		using PrependRange = decltype(
-			([]<template<typename...> typename Template, typename... OtherTypes>(std::type_identity<Template<OtherTypes...>>) {
-				return std::type_identity<List::Prepend<OtherTypes...>>();
-			})(std::type_identity<Range>())
-		)::type;
+		using PrependRange = decltype(([]<template<typename...> typename Template, typename... OtherTypes>(std::type_identity<Template<OtherTypes...>>) {
+			return std::type_identity<List::Prepend<OtherTypes...>>();
+		})(std::type_identity<Range>()))::type;
 
 		using Reverse = decltype(xieite::functors::unroll<Types...>(
 			[]<std::size_t... i> {
@@ -201,11 +195,9 @@ namespace xieite::types {
 		))::type;
 
 		template<typename Range>
-		using ZipRange = decltype(
-			([]<template<typename...> typename Template, typename... OtherTypes>(std::type_identity<Template<OtherTypes...>>) {
-				return std::type_identity<List::Zip<OtherTypes...>>();
-			})(std::type_identity<Range>())
-		)::type;
+		using ZipRange = decltype(([]<template<typename...> typename Template, typename... OtherTypes>(std::type_identity<Template<OtherTypes...>>) {
+			return std::type_identity<List::Zip<OtherTypes...>>();
+		})(std::type_identity<Range>()))::type;
 	};
 }
 

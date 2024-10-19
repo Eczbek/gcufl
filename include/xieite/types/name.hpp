@@ -19,7 +19,7 @@ namespace XIEITE_DETAIL {
 	}
 }
 
-export namespace xieite::types {
+namespace xieite::types {
 	template<typename Type>
 	[[nodiscard]] consteval std::string_view name() noexcept {
 		static constexpr auto data = xieite::containers::makeArray<char, XIEITE_DETAIL::getTypeName(XIEITE_FUNCTION_SIGNATURE).size()>(XIEITE_DETAIL::getTypeName(XIEITE_FUNCTION_SIGNATURE));

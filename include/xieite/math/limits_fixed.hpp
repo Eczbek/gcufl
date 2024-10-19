@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cmath>
+#include <algorithm>
 #include <concepts>
 #include "../concepts/arithmetic.hpp"
 #include "../math/interval.hpp"
