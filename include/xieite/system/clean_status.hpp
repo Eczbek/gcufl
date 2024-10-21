@@ -7,7 +7,7 @@
 #endif
 
 namespace xieite::system {
-	int cleanStatus(const int status) noexcept {
+	inline int cleanStatus(const int status) noexcept {
 #if XIEITE_PLATFORM_TYPE_UNIX
 		if (WIFEXITED(status)) {
 			return WEXITSTATUS(status);

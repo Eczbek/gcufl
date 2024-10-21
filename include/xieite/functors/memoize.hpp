@@ -48,7 +48,7 @@ struct MemoHash {
 
 namespace xieite::functors {
 	template<typename... Arguments, std::invocable<Arguments...> Functor>
-	/* discardable */ std::invoke_result_t<Functor, Arguments...> memoize(Functor functor, const Arguments&... arguments)
+	/* discardable */ inline std::invoke_result_t<Functor, Arguments...> memoize(Functor functor, const Arguments&... arguments)
 	noexcept(std::is_nothrow_invocable_v<Functor, Arguments...>) {
 		if constexpr (
 			!std::same_as<std::invoke_result_t<Functor, Arguments...>, void>

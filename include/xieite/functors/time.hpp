@@ -11,7 +11,7 @@
 
 namespace xieite::functors {
 	template<xieite::concepts::Duration Duration = std::chrono::nanoseconds, xieite::concepts::Clock Clock = std::chrono::steady_clock, typename... Arguments, std::invocable<Arguments...> Functor>
-	[[nodiscard]] Duration time(Functor&& functor, Arguments&&... arguments)
+	[[nodiscard]] inline Duration time(Functor&& functor, Arguments&&... arguments)
 	noexcept(std::is_nothrow_invocable_v<Functor, Arguments...>) {
 		xieite::time::Stopwatch<Clock> stopwatch;
 		stopwatch.start();

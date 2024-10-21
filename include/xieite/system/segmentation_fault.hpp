@@ -1,7 +1,7 @@
 #pragma once
 
 namespace xieite::system {
-	void segmentationFault() noexcept {
+	inline void segmentationFault() noexcept {
 		*static_cast<volatile int*>(nullptr);
 	}
 }

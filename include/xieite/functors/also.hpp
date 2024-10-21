@@ -17,8 +17,8 @@ namespace xieite::functors {
 	}
 
 	template<xieite::concepts::CopyConstructible Type, std::invocable<> Functor>
-	[[nodiscard]] constexpr Type also(Type&& value, Functor&& functor)
-	XIEITE_ARROW_BASE(xieite::functors::also(
+	[[nodiscard]] constexpr auto also(Type&& value, Functor&& functor)
+	XIEITE_ARROW(xieite::functors::also(
 		XIEITE_FORWARD(value),
 		[&functor](auto&&) {
 			std::invoke(XIEITE_FORWARD(functor));

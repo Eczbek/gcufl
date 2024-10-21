@@ -7,12 +7,12 @@
 #include <string>
 
 namespace xieite::streams {
-	std::string read(std::istream& inputStream) noexcept {
+	inline std::string read(std::istream& inputStream) noexcept {
 		using Iterator = std::istreambuf_iterator<char>;
 		return std::string(Iterator(inputStream), Iterator());
 	}
 
-	std::string read(std::FILE* const inputFile) noexcept {
+	inline std::string read(std::FILE* const inputFile) noexcept {
 		std::string result;
 		std::size_t chunkSize = 1024;
 		while (true) {
