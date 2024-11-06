@@ -1,14 +1,13 @@
 #pragma once
 
-#include "../concepts/arithmetic.hpp"
-#include "../math/is_negative.hpp"
+#include "../math/neg.hpp"
+#include "../meta/is_arith.hpp"
+#include "../pp/fn.hpp"
 
-namespace xieite::math {
-	template<xieite::concepts::Arithmetic First, xieite::concepts::Arithmetic... Rest>
-	[[nodiscard]] constexpr int sign(const First first, const Rest... rest) noexcept {
-		static constexpr auto get = [](const First value) {
-			return (value > 0) - xieite::math::isNegative(value);
-		};
+namespace xieite {
+	template<xieite::is_arith T, xieite::is_arith... Ts>
+	[[nodiscard]] constexpr int sign(T first, Ts... rest) noexcept {
+		static constexpr auto get = XIEITE_FN(($0 > 0) - xieite::neg($0));
 		return (get(first) * ... * get(rest));
 	}
 }

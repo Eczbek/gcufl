@@ -3,13 +3,13 @@
 #include <concepts>
 #include <numbers>
 
-namespace xieite::math {
+namespace xieite {
 	template<typename>
-	constexpr double pi = std::numbers::pi;
+	inline constexpr double pi = std::numbers::pi;
 
-	template<std::floating_point Fractional>
-	constexpr Fractional pi<Fractional> = std::numbers::pi_v<Fractional>;
+	template<std::floating_point T>
+	inline constexpr T pi<T> = std::numbers::pi_v<T>;
 
-	template<std::integral Integral>
-	constexpr Integral pi<Integral> = static_cast<Integral>(std::numbers::pi);
+	template<std::integral T>
+	inline constexpr T pi<T> = static_cast<T>(std::numbers::pi);
 }

@@ -2,15 +2,15 @@
 
 #include <algorithm>
 #include <concepts>
-#include "../concepts/arithmetic.hpp"
 #include "../math/interval.hpp"
+#include "../meta/is_arith.hpp"
 
-namespace xieite::math {
-	template<xieite::concepts::Arithmetic First, std::convertible_to<First>... Rest>
-	[[nodiscard]] constexpr xieite::math::Interval<First> limitsFixed(const First first, const Rest... rest) noexcept {
-		auto result = xieite::math::Interval<First>(first, first);
+namespace xieite {
+	template<xieite::is_arith T, std::convertible_to<T>... Ts>
+	[[nodiscard]] constexpr xieite::interval<T> limits_fixed(T first, Ts... rest) noexcept {
+		auto result = xieite::interval<T>(first, first);
 		(..., (result =
-			xieite::math::Interval<First>(
+			xieite::interval<T>(
 				std::min(result.start, rest),
 				std::max(result.end, rest)
 			)

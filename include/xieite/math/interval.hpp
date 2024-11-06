@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../concepts/arithmetic.hpp"
+#include "../meta/is_arith.hpp"
 
-namespace xieite::math {
-	template<xieite::concepts::Arithmetic Arithmetic>
-	struct Interval {
-		Arithmetic start;
-		Arithmetic end;
+namespace xieite {
+	template<xieite::is_arith T>
+	struct interval {
+		T start;
+		T end;
 	};
 }

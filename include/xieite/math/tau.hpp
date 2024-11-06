@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../concepts/arithmetic.hpp"
 #include "../math/pi.hpp"
+#include "../meta/is_arith.hpp"
 
-namespace xieite::math {
-	template<xieite::concepts::Arithmetic Arithmetic>
-	constexpr Arithmetic tau = xieite::math::pi<Arithmetic> * 2;
+namespace xieite {
+	template<xieite::is_arith T>
+	inline constexpr T tau = xieite::pi<T> * 2;
 }
