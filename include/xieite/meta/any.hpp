@@ -4,7 +4,7 @@ namespace xieite {
 	struct any {
 		any() = default;
 
-		any(auto&&...) noexcept {}
+		constexpr any(auto&&...) noexcept {}
 
 		template<typename T>
 		explicit(false) operator T() const noexcept {
