@@ -29,7 +29,7 @@ namespace xieite {
 				if (digits.contains(str[i])) {
 					continue;
 				}
-				if (config.points.contains(str[i])) {
+				if (config.pts.contains(str[i])) {
 					if (!point) {
 						point = true;
 						continue;

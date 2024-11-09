@@ -4,11 +4,11 @@
 #include <cstddef>
 #include <memory>
 #include <utility>
-#include "../meta/is_trivial_dtor.hpp"
+#include "../meta/is_triv_dtor.hpp"
 #include "../pp/fwd.hpp"
 
 namespace xieite {
-	template<xieite::is_trivial_dtor T>
+	template<xieite::is_triv_dtor T>
 	struct shredder {
 	public:
 		constexpr shredder() noexcept {

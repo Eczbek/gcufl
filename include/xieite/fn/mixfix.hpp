@@ -1,8 +1,8 @@
 #pragma once
 
 #include <concepts>
-#include "../ctnr/maybe_copy_assign.hpp"
-#include "../ctnr/maybe_move_assign.hpp"
+#include "../ctnr/set_cp_assign.hpp"
+#include "../ctnr/set_mv_assign.hpp"
 #include "../fn/fn.hpp"
 #include "../pp/fwd.hpp"
 
@@ -329,7 +329,7 @@ namespace xieite {
 	struct mixfix<Ret(LeftArg, RightArg)> : xieite::fn<Ret(LeftArg, RightArg)> {
 	private:
 		template<typename LeftArgRef>
-		struct inter : xieite::maybe_copy_assign<false>, xieite::maybe_move_assign<false> {
+		struct inter : xieite::set_cp_assign<false>, xieite::set_mv_assign<false> {
 		public:
 			constexpr inter(const mixfix& mixfix, LeftArgRef&& left) noexcept
 			: mixfix(mixfix), left(XIEITE_FWD(left)) {}

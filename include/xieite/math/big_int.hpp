@@ -27,7 +27,7 @@
 #include "../math/ssize.hpp"
 #include "../math/sub_overflow.hpp"
 #include "../meta/is_arith.hpp"
-#include "../meta/try_unsigned.hpp"
+#include "../meta/try_unsign.hpp"
 #include "../str/str_num_config.hpp"
 
 namespace xieite {
@@ -37,7 +37,7 @@ namespace xieite {
 		template<std::integral U = int>
 		explicit(false) constexpr big_int(U value = 0) noexcept
 		: neg(xieite::neg(value)) {
-			xieite::try_unsigned<U> abs = xieite::abs(value);
+			xieite::try_unsign<U> abs = xieite::abs(value);
 			do {
 				this->data.push_back(static_cast<T>(abs));
 				if constexpr (sizeof(U) > sizeof(T)) {

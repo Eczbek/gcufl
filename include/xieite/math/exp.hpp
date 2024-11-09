@@ -1,8 +1,8 @@
 #pragma once
 
 #include <type_traits>
-#include "../ctnr/maybe_copy_assign.hpp"
-#include "../ctnr/maybe_move_assign.hpp"
+#include "../ctnr/set_cp_assign.hpp"
+#include "../ctnr/set_mv_assign.hpp"
 #include "../math/pow.hpp"
 #include "../meta/is_arith.hpp"
 
@@ -10,7 +10,7 @@ namespace xieite {
 	template<xieite::is_arith T>
 	struct exp {
 	private:
-		struct inter : xieite::maybe_copy_assign<false>, xieite::maybe_move_assign<false> {
+		struct inter : xieite::set_cp_assign<false>, xieite::set_mv_assign<false> {
 		public:
 			explicit constexpr inter(T value) noexcept
 			: value(value) {}

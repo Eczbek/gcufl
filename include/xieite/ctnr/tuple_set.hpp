@@ -13,10 +13,10 @@ namespace xieite {
 	template<template<typename> typename, typename>
 	struct tuple_set;
 
-	template<template<typename> typename C, typename K, typename... Ks>
-	struct tuple_set<C, std::tuple<K, Ks...>> {
+	template<template<typename> typename Ctnr, typename K, typename... Ks>
+	struct tuple_set<Ctnr, std::tuple<K, Ks...>> {
 	public:
-		constexpr tuple_set(std::initializer_list<std::pair<K, xieite::tuple_set<C, std::tuple<Ks...>>>> list = {}) noexcept
+		constexpr tuple_set(std::initializer_list<std::pair<K, xieite::tuple_set<Ctnr, std::tuple<Ks...>>>> list = {}) noexcept
 		: set(list.begin(), list.end()) {}
 
 		template<std::convertible_to<std::tuple<K, Ks...>> KsRef>
@@ -41,11 +41,11 @@ namespace xieite {
 		)
 
 	private:
-		C<xieite::tuple_set<C, std::tuple<Ks...>>> set;
+		Ctnr<xieite::tuple_set<Ctnr, std::tuple<Ks...>>> set;
 	};
 
-	template<template<typename> typename C, typename Key>
-	struct tuple_set<C, std::tuple<Key>> {
+	template<template<typename> typename Ctnr, typename Key>
+	struct tuple_set<Ctnr, std::tuple<Key>> {
 	public:
 		constexpr tuple_set(std::initializer_list<Key> list = {}) noexcept
 		: set(list.begin(), list.end()) {}
@@ -63,6 +63,6 @@ namespace xieite {
 		XIEITE_ARROW(this->set.contains(std::get<0>(XIEITE_FWD(key))))
 
 	private:
-		C<Key> set;
+		Ctnr<Key> set;
 	};
 }

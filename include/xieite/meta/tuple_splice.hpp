@@ -4,12 +4,12 @@
 #include <tuple>
 #include <utility>
 #include "../fn/unroll.hpp"
-#include "../meta/is_spec_of.hpp"
+#include "../meta/is_spec.hpp"
 #include "../meta/tuple_fwd.hpp"
 #include "../pp/fwd.hpp"
 
 namespace xieite {
-	template<std::size_t start, std::size_t end = start, xieite::is_spec_of<std::tuple> Tuple0, xieite::is_spec_of<std::tuple> Tuple1 = std::tuple<>>
+	template<std::size_t start, std::size_t end = start, xieite::is_spec<std::tuple> Tuple0, xieite::is_spec<std::tuple> Tuple1 = std::tuple<>>
 	[[nodiscard]] constexpr auto tuple_splice(Tuple0&& tuple0, Tuple1&& tuple1 = {}) noexcept {
 		static constexpr std::size_t size = std::tuple_size_v<std::remove_cvref_t<Tuple0>>;
 		static_assert(start <= size, "start index must be within tuple size");

@@ -7,7 +7,7 @@
 #include "../meta/is_invoc.hpp"
 #include "../meta/is_nothrow_invoc.hpp"
 #include "../meta/is_nothrow_range.hpp"
-#include "../math/num_reverse.hpp"
+#include "../math/num_rev.hpp"
 
 namespace xieite {
 	template<std::ranges::forward_range R, xieite::is_invoc<bool(std::ranges::range_common_reference_t<R>, std::ranges::range_common_reference_t<R>)> F = std::ranges::equal_to>
@@ -28,6 +28,6 @@ namespace xieite {
 
 	template<std::integral T>
 	[[nodiscard]] constexpr bool palindrome(T value, std::type_identity_t<T> radix = 10) noexcept {
-		return value == xieite::num_reverse(value, radix);
+		return value == xieite::num_rev(value, radix);
 	}
 }

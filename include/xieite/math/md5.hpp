@@ -10,7 +10,7 @@
 #include "../math/bit_join.hpp"
 #include "../math/bit_unjoin.hpp"
 #include "../math/sign_cast.hpp"
-#include "../str/num_str.hpp"
+#include "../str/str_num.hpp"
 #include "../str/pad_front.hpp"
 
 namespace xieite {
@@ -61,7 +61,7 @@ namespace xieite {
 		}
 		std::string result;
 		for (std::uint32_t item : foo) {
-			result += xieite::num_str((item >> 24) | ((item & 16711680) >> 8) | ((item & 65280) << 8) | (item << 24), 16, {}, 8);
+			result += xieite::str_num((item >> 24) | ((item & 16711680) >> 8) | ((item & 65280) << 8) | (item << 24), 16, {}, 8);
 		}
 		return result;
 	}

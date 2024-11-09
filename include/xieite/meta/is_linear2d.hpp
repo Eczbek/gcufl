@@ -2,7 +2,7 @@
 
 #include <type_traits>
 #include "../meta/is_arith.hpp"
-#include "../meta/is_same_as_any.hpp"
+#include "../meta/is_same_any.hpp"
 
 namespace xieite {
 	template<xieite::is_arith>
@@ -16,7 +16,7 @@ namespace xieite {
 
 	template<typename T, typename U = double>
 	concept is_linear2d =
-		xieite::is_same_as_any<
+		xieite::is_same_any<
 			std::remove_cv_t<T>,
 			xieite::line2d<U>,
 			xieite::ray2d<U>,

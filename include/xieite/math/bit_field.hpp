@@ -3,8 +3,8 @@
 #include <compare>
 #include <cstddef>
 #include <type_traits>
-#include "../meta/least_int.hpp"
-#include "../meta/least_uint.hpp"
+#include "../math/least_int.hpp"
+#include "../math/least_uint.hpp"
 
 namespace xieite {
 	template<std::size_t bits, bool sign>

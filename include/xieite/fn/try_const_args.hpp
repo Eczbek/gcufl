@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../meta/maybe_const.hpp"
+#include "../meta/set_const.hpp"
 #include "../meta/type_list.hpp"
 #include "../pp/arrow.hpp"
 #include "../pp/fwd.hpp"
@@ -17,10 +17,10 @@ namespace xieite {
 					std::conditional_t<
 						xieite::type_list<Args...>
 						::template slice<sizeof...(Rest) + 1>
-						::template prepend<F, Rest..., xieite::maybe_const<Arg, true>>
+						::template prepend<F, Rest..., xieite::set_const<Arg, true>>
 						::template to<std::is_invocable>
 						::value,
-						xieite::maybe_const<Arg, true>,
+						xieite::set_const<Arg, true>,
 						Arg
 					>
 				>();
