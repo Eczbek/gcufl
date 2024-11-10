@@ -4,7 +4,7 @@ namespace XIEITE_DETAIL {
 	template<auto fn, typename T>
 	struct fold_helper : std::type_identity<T> {
 		template<typename U>
-		XIEITE_DETAIL::fold_helper<fn, typename decltype(fn.template operator()<U, T>())::type> operator->*(const U&) const;
+		XIEITE_DETAIL::fold_helper<fn, decltype(fn.template operator()<U, T>())> operator->*(const U&) const;
 	};
 }
 

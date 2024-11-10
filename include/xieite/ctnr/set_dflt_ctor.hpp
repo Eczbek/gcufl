@@ -2,14 +2,14 @@
 
 namespace xieite {
 	template<bool>
-	struct maybe_dflt_ctor {};
+	struct set_dflt_ctor {};
 
 	template<>
-	struct maybe_dflt_ctor<false> {
-		maybe_dflt_ctor() = delete;
-		maybe_dflt_ctor(const xieite::maybe_dflt_ctor<false>&) = default;
-		maybe_dflt_ctor(xieite::maybe_dflt_ctor<false>&&) = default;
-		xieite::maybe_dflt_ctor<false>& operator=(const xieite::maybe_dflt_ctor<false>&) = default;
-		xieite::maybe_dflt_ctor<false>& operator=(xieite::maybe_dflt_ctor<false>&&) = default;
+	struct set_dflt_ctor<false> {
+		set_dflt_ctor() = delete;
+		set_dflt_ctor(const xieite::set_dflt_ctor<false>&) = default;
+		set_dflt_ctor(xieite::set_dflt_ctor<false>&&) = default;
+		xieite::set_dflt_ctor<false>& operator=(const xieite::set_dflt_ctor<false>&) = default;
+		xieite::set_dflt_ctor<false>& operator=(xieite::set_dflt_ctor<false>&&) = default;
 	};
 }

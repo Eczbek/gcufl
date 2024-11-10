@@ -7,7 +7,7 @@
 
 #	define XIEITE_UNREACHABLE() ::std::unreachable()
 #else
-#	include <xieite/cplr.hpp"
+#	include "../pp/cplr.hpp"
 
 #	if XIEITE_CPLR_TYPE_GCC || XIEITE_CPLR_TYPE_CLANG
 #		define XIEITE_UNREACHABLE() __builtin_unreachable()

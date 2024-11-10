@@ -75,30 +75,26 @@ namespace xieite {
 		using append = xieite::type_list<Ts..., Us...>;
 
 		template<typename R>
-		using append_list = decltype(
-			([]<template<typename...> typename M, typename... Us>(std::type_identity<M<Us...>>) {
-				return std::type_identity<xieite::type_list<Ts...>::append<Us...>>();
-			})(std::type_identity<R>())
-		)::type;
+		using append_list = decltype(([]<template<typename...> typename M, typename... Us>(const M<Us...>&) {
+			return xieite::type_list<Ts...>::append<Us...>();
+		})(std::declval<R>()));
 
 		template<typename... Us>
 		using prepend = xieite::type_list<Us..., Ts...>;
 
 		template<typename R>
-		using prepend_list = decltype(
-			([]<template<typename...> typename M, typename... Us>(std::type_identity<M<Us...>>) {
-				return std::type_identity<xieite::type_list<Ts...>::prepend<Us...>>();
-			})(std::type_identity<R>())
-		)::type;
+		using prepend_list = decltype(([]<template<typename...> typename M, typename... Us>(const M<Us...>&) {
+			return xieite::type_list<Ts...>::prepend<Us...>();
+		})(std::declval<R>()));
 
 		using rev = decltype(xieite::unroll<Ts...>([]<std::size_t... i> {
 			return std::type_identity<xieite::type_list<xieite::type_list<Ts...>::at<sizeof...(Ts) - i - 1>...>>();
 		}))::type;
 
-		template<std::size_t start, std::size_t end = sizeof...(Ts), auto = [] {}> // Lambda is a temporary workaround for GCC
+		template<std::size_t start, std::size_t end = sizeof...(Ts), auto = [] {}> // Lambda argument is a temporary workaround for GCC
 		using slice = decltype(xieite::unroll<xieite::diff(start, end)>([]<std::size_t... i> {
-			return std::type_identity<xieite::type_list<xieite::type_list<Ts...>::at<i + std::min(start, end)>...>>();
-		}))::type;
+			return xieite::type_list<xieite::type_list<Ts...>::at<i + std::min(start, end)>...>();
+		}));
 
 		template<std::size_t start, std::size_t end = start + 1>
 		using erase =
@@ -160,7 +156,11 @@ namespace xieite {
 		using filter =
 			xieite::fold<
 				[]<typename T, typename List> {
-					return std::type_identity<std::conditional_t<xieite::is_satisf<T, cond>, typename List::template append<T>, List>>();
+					return std::conditional_t<
+						xieite::is_satisf<T, cond>,
+						typename List::template append<T>,
+						List
+					>();
 				},
 				xieite::type_list<>,
 				Ts...
@@ -170,32 +170,38 @@ namespace xieite {
 		using dedup =
 			xieite::fold<
 				[]<typename T, typename List> {
-					return std::type_identity<std::conditional_t<!xieite::type_list<Ts...>::has<T, comp>, typename List::template append<T>, List>>();
+					return std::conditional_t<
+						!List::template has<T, comp>,
+						typename List::template append<T>,
+						List
+					>();
 				},
 				xieite::type_list<>,
 				Ts...
 			>;
 
 		template<std::size_t n>
-		using repeat = decltype(([]<std::size_t i = 0, typename... Us>(this auto self) {
-			if constexpr (i < n) {
-				return self.template operator()<i + 1, Us..., Ts...>();
-			} else {
-				return std::type_identity<xieite::type_list<Us...>>();
-			}
-		})())::type;
+		using repeat = decltype(xieite::unroll<n>([]<std::size_t... i> {
+			return xieite::fold<
+				[]<typename, typename List> {
+					return typename List::template append<Ts...>();
+				},
+				xieite::type_list<>,
+				decltype(i)...
+			>();
+		}));
 
 		template<std::size_t arity, auto fn>
 		requires(!(sizeof...(Ts) % arity))
 		using xform = decltype(xieite::unroll<sizeof...(Ts) / arity>([]<std::size_t... i> {
-			return std::type_identity<
-				type_list<typename decltype(
+			return type_list<
+				typename decltype(
 					type_list::template slice<arity * i, arity * (i + 1)>
 					::template append_list<type_list::template slice<0, arity * i>>
 					::apply(fn)
-				)::type...>
+				)::type...
 			>();
-		}))::type;
+		}));
 
 		template<std::size_t arity, auto fn>
 		requires(!(sizeof...(Ts) % arity))
@@ -215,15 +221,13 @@ namespace xieite {
 		template<typename... Us>
 		requires(sizeof...(Ts) == sizeof...(Us))
 		using zip = decltype(xieite::unroll<Ts...>([]<std::size_t... i> {
-			return std::type_identity<type_list<type_list<type_list::at<i>, Us>...>>();
-		}))::type;
+			return type_list<type_list<type_list::at<i>, Us>...>();
+		}));
 
 		template<typename R>
-		using zip_list = decltype(
-			([]<template<typename...> typename M, typename... Us>(std::type_identity<M<Us...>>) {
-				return std::type_identity<type_list::zip<Us...>>();
-			})(std::type_identity<R>())
-		)::type;
+		using zip_list = decltype(([]<template<typename...> typename M, typename... Us>(const M<Us...>&) {
+			return type_list::zip<Us...>();
+		})(std::declval<R>()));
 	};
 }
 

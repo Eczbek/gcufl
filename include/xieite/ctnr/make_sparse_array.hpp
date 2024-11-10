@@ -13,10 +13,9 @@
 #include "../meta/arity.hpp"
 #include "../meta/is_invoc.hpp"
 #include "../meta/is_nothrow_invoc.hpp"
-#include "../pp/fn.hpp"
 
 namespace xieite {
-	template<std::integral K, typename V, std::ranges::input_range R = std::initializer_list<std::pair<K, V>>, xieite::is_invoc<V(std::ranges::range_common_reference_t<R>)> F = decltype(XIEITE_FN(static_cast<V>($0)))>
+	template<std::integral K, typename V, std::ranges::input_range R = std::initializer_list<std::pair<K, V>>, xieite::is_invoc<V(std::ranges::range_common_reference_t<R>)> F = decltype([](auto&& x) -> V { return static_cast<V>(XIEITE_FWD(x)); })>
 	[[nodiscard]] constexpr std::array<V, (1uz << xieite::bit_size<K>)> make_sparse_array(R&& entries, F&& fn = {})
 	noexcept(xieite::is_nothrow_invoc<F, V(std::ranges::range_common_reference_t<R>)>) {
 		static_assert(std::numeric_limits<K>::digits <= 16, "key type must be reasonably small");
