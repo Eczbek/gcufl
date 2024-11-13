@@ -9,7 +9,8 @@
 #include "../str/chv.hpp"
 
 namespace xieite {
-	template<std::ranges::input_range R, typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<Ch>, xieite::end...,
+	template<std::ranges::input_range R, typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<Ch>,
+		xieite::end...,
 		typename Str = std::basic_string<Ch, Traits, Alloc>,
 		typename ChV = xieite::chv<Ch, Traits>>
 	requires(std::constructible_from<Str, std::ranges::range_common_reference_t<R>>)

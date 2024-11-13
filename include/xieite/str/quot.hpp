@@ -6,7 +6,8 @@
 #include "../str/str_rplc.hpp"
 
 namespace xieite {
-	template<typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<Ch>, xieite::end...,
+	template<typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<Ch>,
+		xieite::end...,
 		typename Str = std::basic_string<Ch, Traits, Alloc>>
 	[[nodiscard]] constexpr Str quot(Str str, Ch delim = '"', Ch esc = '\\') noexcept {
 		const Str esc_delim = Str(1, esc) + delim;

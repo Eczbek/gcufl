@@ -19,7 +19,8 @@ namespace xieite {
 		explicit(false) constexpr chv(const Ch& c) noexcept
 		: std::basic_string_view<Ch, Traits>(&c, 1) {}
 
-		template<typename Alloc = std::allocator<Ch>, xieite::end...,
+		template<typename Alloc = std::allocator<Ch>,
+		xieite::end...,
 			typename Str = std::basic_string<Ch, Traits, Alloc>>
 		[[nodiscard]] explicit(false) constexpr operator Str() const noexcept {
 			return Str(*this);

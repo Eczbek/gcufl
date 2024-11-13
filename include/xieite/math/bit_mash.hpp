@@ -8,7 +8,8 @@
 #include "../meta/try_unsign.hpp"
 
 namespace xieite {
-	template<std::size_t... sizes, std::integral... Ts, xieite::end...,
+	template<std::size_t... sizes, std::integral... Ts,
+		xieite::end...,
 		std::size_t bits = (... + sizes)>
 	[[nodiscard]] constexpr std::bitset<bits> bit_mash(Ts... values) noexcept {
 		std::bitset<bits> result;
@@ -16,7 +17,8 @@ namespace xieite {
 		return result;
 	}
 
-	template<std::size_t... sizes, std::integral T, xieite::end...,
+	template<std::size_t... sizes, std::integral T,
+		xieite::end...,
 		std::size_t bits = (... + sizes)>
 	[[nodiscard]] constexpr std::bitset<bits> bit_mash(const std::array<T, sizeof...(sizes)>& values) noexcept {
 		std::bitset<bits> result;

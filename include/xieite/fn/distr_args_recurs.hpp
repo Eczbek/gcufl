@@ -13,7 +13,8 @@
 #include "../pp/fwd.hpp"
 
 namespace xieite {
-	template<std::size_t arity, std::size_t prev_idx = 0, typename F, typename... Args, xieite::end...,
+	template<std::size_t arity, std::size_t prev_idx = 0, typename F, typename... Args,
+		xieite::end...,
 		typename List = xieite::type_list<xieite::any>::template repeat<arity>::template prepend<F>>
 	requires(List::template to<std::is_invocable>::value)
 	constexpr decltype(auto) distr_args_recurs(F&& fn, Args&&... args)
