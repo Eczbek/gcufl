@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../meta/is_const.hpp"
-#include "../meta/is_ptr.hpp"
 #include "../meta/set_const_data.hpp"
+#include "../trait/is_const.hpp"
+#include "../trait/is_ptr.hpp"
 
 namespace xieite {
 	template<typename T, xieite::is_ptr U>

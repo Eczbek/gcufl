@@ -1,7 +1,7 @@
 #pragma once
 
 #include <utility>
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>

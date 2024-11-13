@@ -7,11 +7,11 @@
 #include <stdio.h>
 #include <string>
 #include <string_view>
-#include "../meta/is_istream.hpp"
-#include "../meta/is_ostream.hpp"
-#include "../meta/is_stream.hpp"
 #include "../pp/cplr.hpp"
 #include "../pp/pltf.hpp"
+#include "../trait/is_istream.hpp"
+#include "../trait/is_ostream.hpp"
+#include "../trait/is_stream.hpp"
 
 #if XIEITE_PLTF_TYPE_UNIX
 #	include <fcntl.h>

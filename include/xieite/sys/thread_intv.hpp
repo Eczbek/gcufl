@@ -3,8 +3,8 @@
 #include <concepts>
 #include <functional>
 #include <thread>
-#include "../meta/is_dur.hpp"
 #include "../sys/thread_loop.hpp"
+#include "../trait/is_dur.hpp"
 
 namespace xieite {
 	struct thread_intv {

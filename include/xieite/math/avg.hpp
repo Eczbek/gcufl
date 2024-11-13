@@ -2,7 +2,7 @@
 
 #include <concepts>
 #include <type_traits>
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T, std::common_with<T>... Ts>

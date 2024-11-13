@@ -5,9 +5,9 @@
 #include <functional>
 #include <utility>
 #include "../fn/unroll.hpp"
-#include "../meta/is_rm_cvref_same.hpp"
 #include "../pp/arrow.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/is_rm_cvref_same.hpp"
 
 namespace xieite {
 	template<typename F, typename V, std::size_t size, xieite::is_rm_cvref_same<std::array<V, size>> Array>

@@ -4,8 +4,8 @@
 #include <functional>
 #include <memory>
 #include <type_traits>
-#include "../meta/is_invoc.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/is_invoc.hpp"
 
 namespace xieite {
 	template<typename>

@@ -3,11 +3,15 @@
 #include <cstddef>
 #include <memory>
 #include <string>
-#include "../str/sv.hpp"
+#include "../meta/end.hpp"
+#include "../meta/id.hpp"
+#include "../str/chv.hpp"
 
 namespace xieite {
-	template<typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<Ch>>
-	[[nodiscard]] constexpr std::basic_string<Ch, Traits, Alloc> str_rplc(std::basic_string<Ch, Traits, Alloc> str, xieite::sv<Ch, Traits> orig, xieite::sv<Ch, Traits> replc) noexcept {
+	template<typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<Ch>, xieite::end...,
+		typename Str = std::basic_string<Ch, Traits, Alloc>,
+		typename ChV = xieite::chv<Ch, Traits>>
+	[[nodiscard]] constexpr Str str_rplc(Str str, xieite::id<ChV> orig, xieite::id<ChV> replc) noexcept {
 		std::size_t i = 0;
 		while (true) {
 			i = str.find(orig, i);

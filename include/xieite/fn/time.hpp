@@ -4,10 +4,10 @@
 #include <concepts>
 #include <functional>
 #include <type_traits>
-#include "../meta/is_clock.hpp"
-#include "../meta/is_dur.hpp"
 #include "../pp/fwd.hpp"
 #include "../sys/stopwatch.hpp"
+#include "../trait/is_clock.hpp"
+#include "../trait/is_dur.hpp"
 
 namespace xieite {
 	template<xieite::is_dur Dur = std::chrono::nanoseconds, xieite::is_clock Clock = std::chrono::steady_clock, typename F, typename... Args>

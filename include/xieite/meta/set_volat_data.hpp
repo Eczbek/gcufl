@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../meta/is_ptr.hpp"
 #include "../meta/set_ptr.hpp"
 #include "../meta/set_volat.hpp"
+#include "../trait/is_ptr.hpp"
 
 namespace xieite {
 	template<xieite::is_ptr T, bool cond>

@@ -2,16 +2,15 @@
 
 #include <concepts>
 #include <functional>
-#include <type_traits>
 #include "../math/almost_eq.hpp"
 #include "../math/neg.hpp"
-#include "../meta/is_arith.hpp"
-#include "../meta/is_invoc.hpp"
-#include "../meta/is_nothrow_invoc.hpp"
+#include "../trait/is_arith.hpp"
+#include "../trait/is_invoc.hpp"
+#include "../trait/is_nothrow_invoc.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T, xieite::is_invoc<bool(T)> F>
-	[[nodiscard]] constexpr T num_search(F&& cond, T min, std::type_identity_t<T> max)
+	[[nodiscard]] constexpr T num_search(F&& cond, T min, T max)
 	noexcept(xieite::is_nothrow_invoc<F, bool(T)>) {
 		while (true) {
 			const T mid = static_cast<T>((min + max) / 2);

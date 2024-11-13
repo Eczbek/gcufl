@@ -2,9 +2,9 @@
 
 #include <functional>
 #include <ranges>
-#include "../meta/is_invoc.hpp"
-#include "../meta/is_nothrow_invoc.hpp"
-#include "../meta/is_nothrow_range.hpp"
+#include "../trait/is_invoc.hpp"
+#include "../trait/is_nothrow_invoc.hpp"
+#include "../trait/is_nothrow_range.hpp"
 
 namespace xieite {
 	template<std::ranges::input_range R0, std::ranges::input_range R1, xieite::is_invoc<bool(std::ranges::range_common_reference_t<R0>, std::ranges::range_common_reference_t<R1>)> F = std::ranges::equal_to>

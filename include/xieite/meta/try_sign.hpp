@@ -1,7 +1,7 @@
 #pragma once
 
 #include <type_traits>
-#include "../meta/is_uint.hpp"
+#include "../trait/is_uint.hpp"
 
 namespace xieite {
 	template<typename T>

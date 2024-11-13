@@ -9,8 +9,8 @@
 #include "../math/intxn2d.hpp"
 #include "../math/pt2d.hpp"
 #include "../math/segm2d.hpp"
-#include "../meta/is_arith.hpp"
 #include "../pp/fn.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith>

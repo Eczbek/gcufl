@@ -7,7 +7,7 @@
 #include <type_traits>
 #include <vector>
 #include "../math/avg.hpp"
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<std::ranges::forward_range R, typename T = std::common_type_t<std::ranges::range_value_t<R>, double>>

@@ -4,7 +4,7 @@
 #include <vector>
 #include "../ctnr/make_array.hpp"
 #include "../math/mul_overflow.hpp"
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>

@@ -4,7 +4,7 @@
 #include <type_traits>
 #include "../math/poly2d.hpp"
 #include "../math/pt2d.hpp"
-#include "../meta/is_linear2d.hpp"
+#include "../trait/is_linear2d.hpp"
 
 namespace xieite {
 	template<typename T = double>
@@ -15,9 +15,9 @@ namespace xieite {
 		);
 	}
 
-	template<typename T = double, xieite::is_linear2d<T> L>
-	[[nodiscard]] constexpr L rot2d(const L& line, std::common_type_t<T, double> angle, xieite::pt2d<T> pivot = {}) noexcept {
-		return L(
+	template<typename T = double, xieite::is_linear2d<T> Line>
+	[[nodiscard]] constexpr Line rot2d(const Line& line, std::common_type_t<T, double> angle, xieite::pt2d<T> pivot = {}) noexcept {
+		return Line(
 			xieite::rot2d(line.a, angle, pivot),
 			xieite::rot2d(line.b, angle, pivot)
 		);

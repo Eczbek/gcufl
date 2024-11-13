@@ -4,9 +4,9 @@
 #include <tuple>
 #include <utility>
 #include "../fn/unroll.hpp"
-#include "../meta/is_spec.hpp"
 #include "../meta/tuple_fwd.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/is_spec.hpp"
 
 namespace xieite {
 	template<std::size_t start, std::size_t end = start, xieite::is_spec<std::tuple> Tuple0, xieite::is_spec<std::tuple> Tuple1 = std::tuple<>>

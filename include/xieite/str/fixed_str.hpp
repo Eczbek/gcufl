@@ -7,8 +7,9 @@
 #include <string>
 #include <string_view>
 #include "../ctnr/make_array.hpp"
-#include "../meta/is_nothrow_range.hpp"
+#include "../meta/end.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/is_nothrow_range.hpp"
 
 namespace xieite {
 	template<std::size_t chars, typename Ch = char>
@@ -28,9 +29,10 @@ namespace xieite {
 		noexcept(xieite::is_nothrow_range<R>)
 		: data(xieite::make_array<Ch, chars>(XIEITE_FWD(data))) {}
 
-		template<typename Traits = std::char_traits<Ch>>
-		[[nodiscard]] constexpr std::basic_string_view<Ch, Traits> view() const noexcept {
-			return std::basic_string_view<Ch, Traits>(this->data.begin(), this->data.end());
+		template<typename Traits = std::char_traits<Ch>, xieite::end...,
+			typename StrV = std::basic_string_view<Ch, Traits>>
+		[[nodiscard]] constexpr StrV view() const noexcept {
+			return StrV(this->data.begin(), this->data.end());
 		}
 	};
 

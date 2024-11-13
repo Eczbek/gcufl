@@ -2,8 +2,8 @@
 
 #include <algorithm>
 #include <ranges>
-#include "../meta/is_nothrow_range.hpp"
 #include "../pp/lift.hpp"
+#include "../trait/is_nothrow_range.hpp"
 
 namespace xieite {
 	template<std::ranges::input_range R>

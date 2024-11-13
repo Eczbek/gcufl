@@ -3,11 +3,11 @@
 #include <concepts>
 #include <functional>
 #include <type_traits>
-#include "../meta/is_cp_ctor.hpp"
-#include "../meta/is_nothrow_cp_ctor.hpp"
-#include "../meta/is_nothrow_invoc.hpp"
 #include "../pp/fn.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/is_cp_ctor.hpp"
+#include "../trait/is_nothrow_cp_ctor.hpp"
+#include "../trait/is_nothrow_invoc.hpp"
 
 namespace xieite {
 	template<xieite::is_cp_ctor T, std::invocable<T&&> F>

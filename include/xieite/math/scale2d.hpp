@@ -1,7 +1,7 @@
 #pragma once
 
 #include <type_traits>
-#include "../meta/is_linear2d.hpp"
+#include "../trait/is_linear2d.hpp"
 #include "../math/poly2d.hpp"
 #include "../math/pt2d.hpp"
 
@@ -11,9 +11,9 @@ namespace xieite {
 		return xieite::pt2d<T>((pt.x - origin.x) * scale + origin.x, (pt.y - origin.y) * scale + origin.y);
 	}
 
-	template<typename T = double, xieite::is_linear2d<T> L>
-	[[nodiscard]] constexpr L scale2d(const L& line, std::common_type_t<T, double> scale, xieite::pt2d<T> origin = {}) noexcept {
-		return L(xieite::scale2d(line.a, scale, origin), xieite::scale2d(line.b, scale, origin));
+	template<typename T = double, xieite::is_linear2d<T> Line>
+	[[nodiscard]] constexpr Line scale2d(const Line& line, std::common_type_t<T, double> scale, xieite::pt2d<T> origin = {}) noexcept {
+		return Line(xieite::scale2d(line.a, scale, origin), xieite::scale2d(line.b, scale, origin));
 	}
 
 	template<typename T = double>

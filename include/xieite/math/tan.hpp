@@ -3,7 +3,7 @@
 #include <cmath>
 #include <type_traits>
 #include <utility>
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T, xieite::is_arith U = std::common_type_t<T, double>>

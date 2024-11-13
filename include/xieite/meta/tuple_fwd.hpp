@@ -1,9 +1,9 @@
 #pragma once
 
 #include <tuple>
-#include "../meta/is_spec.hpp"
 #include "../pp/fwd.hpp"
 #include "../pp/lift.hpp"
+#include "../trait/is_spec.hpp"
 
 namespace xieite {
 	template<xieite::is_spec<std::tuple> Tuple>

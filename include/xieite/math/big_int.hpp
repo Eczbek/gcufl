@@ -26,14 +26,16 @@
 #include "../math/split_bool.hpp"
 #include "../math/ssize.hpp"
 #include "../math/sub_overflow.hpp"
-#include "../meta/is_arith.hpp"
 #include "../meta/try_unsign.hpp"
 #include "../str/str_num_config.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<std::unsigned_integral T = std::uint64_t>
-	struct big_int : std::type_identity<T> {
+	struct big_int {
 	public:
+		using type = T;
+
 		template<std::integral U = int>
 		explicit(false) constexpr big_int(U value = 0) noexcept
 		: neg(xieite::neg(value)) {

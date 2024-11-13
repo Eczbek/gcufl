@@ -3,7 +3,7 @@
 #include <concepts>
 #include <limits>
 #include "../math/neg.hpp"
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T, std::convertible_to<T>... Ts>

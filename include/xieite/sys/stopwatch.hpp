@@ -1,9 +1,9 @@
 #pragma once
 
 #include <chrono>
-#include "../meta/is_clock.hpp"
-#include "../meta/is_dur.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/is_clock.hpp"
+#include "../trait/is_dur.hpp"
 
 namespace xieite {
 	template<xieite::is_clock Clock>

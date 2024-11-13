@@ -4,10 +4,10 @@
 #include <functional>
 #include <ranges>
 #include <vector>
-#include "../meta/is_arith.hpp"
-#include "../meta/is_invoc.hpp"
-#include "../meta/is_nothrow_invoc.hpp"
-#include "../meta/is_nothrow_range.hpp"
+#include "../trait/is_arith.hpp"
+#include "../trait/is_invoc.hpp"
+#include "../trait/is_nothrow_invoc.hpp"
+#include "../trait/is_nothrow_range.hpp"
 
 namespace xieite {
 	template<std::ranges::forward_range R, xieite::is_invoc<bool(std::ranges::range_common_reference_t<R>, std::ranges::range_common_reference_t<R>)> F = std::ranges::greater>

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../meta/is_volat.hpp"
 #include "../meta/set_volat.hpp"
+#include "../trait/is_volat.hpp"
 
 namespace xieite {
 	template<typename T, typename U>

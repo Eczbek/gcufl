@@ -8,8 +8,8 @@
 #include "../math/pow.hpp"
 #include "../math/ssize.hpp"
 #include "../math/split_bool.hpp"
-#include "../meta/is_arith.hpp"
 #include "../str/str_num_config.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>

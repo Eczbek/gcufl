@@ -2,8 +2,8 @@
 
 #include <concepts>
 #include "../math/neg.hpp"
-#include "../meta/is_arith.hpp"
 #include "../meta/try_unsign.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>

@@ -10,17 +10,18 @@
 #include "../math/neg.hpp"
 #include "../math/rem.hpp"
 #include "../math/ssize.hpp"
-#include "../meta/is_arith.hpp"
+#include "../meta/end.hpp"
 #include "../meta/try_unsign.hpp"
-#include "../str/str_num_config.hpp"
 #include "../str/pad_front.hpp"
+#include "../str/str_num_config.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
-	template<xieite::is_arith T>
-	[[nodiscard]] constexpr std::string str_num(T value, std::conditional_t<std::floating_point<T>, xieite::ssize, T> radix = 10, xieite::str_num_config config = {}, std::size_t padding = 0) noexcept {
-		using Radix = decltype(radix);
+	template<xieite::is_arith T, xieite::end...,
+		typename Radix = std::conditional_t<std::floating_point<T>, xieite::ssize, T>>
+	[[nodiscard]] constexpr std::string str_num(T value, Radix radix = 10, xieite::str_num_config config = {}, std::size_t padding = 0) noexcept {
 		std::string result;
-		if (!radix || xieite::almost_eq(value, 0)) {
+		if (!radix || xieite::almost_eq(value, static_cast<T>(0))) {
 			result += config.digits[0];
 			if constexpr (std::floating_point<T>) {
 				result += config.pts[0];
@@ -54,7 +55,7 @@ namespace xieite {
 				do {
 					value *= static_cast<T>(radix);
 					++point;
-				} while ((config.prec - point) && !xieite::almost_eq(std::fmod(value, 1), 0));
+				} while ((config.prec - point) && !xieite::almost_eq(std::fmod(value, 1), static_cast<T>(0)));
 				value = std::round(value);
 			} else {
 				if (value == std::numeric_limits<T>::min()) {

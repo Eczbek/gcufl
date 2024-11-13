@@ -5,12 +5,14 @@
 #include <string>
 #include <string_view>
 #include <vector>
-#include "../str/sv.hpp"
+#include "../str/chv.hpp"
 
 namespace xieite {
-	template<typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<std::basic_string_view<Ch, Traits>>>
-	[[nodiscard]] constexpr std::vector<std::basic_string_view<Ch, Traits>, Alloc> str_split(std::basic_string_view<Ch, Traits> str, xieite::sv<Ch, Traits> delim, bool discard_empty = false) noexcept {
-		std::vector<std::basic_string_view<Ch, Traits>, Alloc> result;
+	template<typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<std::basic_string_view<Ch, Traits>>, xieite::end...,
+		typename StrV = std::basic_string_view<Ch, Traits>,
+		typename Vec = std::vector<StrV, Alloc>>
+	[[nodiscard]] constexpr Vec str_split(StrV str, xieite::chv<Ch, Traits> delim, bool discard_empty = false) noexcept {
+		Vec result;
 		std::size_t i = 0;
 		while (true) {
 			const std::size_t j = str.find(delim, i);

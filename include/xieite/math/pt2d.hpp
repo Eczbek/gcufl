@@ -6,7 +6,7 @@
 #include "../math/almost_eq.hpp"
 #include "../math/pi.hpp"
 #include "../math/tau.hpp"
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith>

@@ -4,8 +4,8 @@
 #include <type_traits>
 #include "../meta/arity.hpp"
 #include "../meta/collapse_fwd_as_tuple.hpp"
-#include "../meta/is_tuple_like.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/is_tuple_like.hpp"
 
 namespace xieite {
 	template<typename T>

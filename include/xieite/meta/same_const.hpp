@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../meta/is_const.hpp"
 #include "../meta/set_const.hpp"
+#include "../trait/is_const.hpp"
 
 namespace xieite {
 	template<typename T, typename U>

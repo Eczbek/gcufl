@@ -2,14 +2,13 @@
 
 #include <cmath>
 #include <limits>
-#include <type_traits>
 #include "../math/abs.hpp"
 #include "../math/diff.hpp"
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>
-	[[nodiscard]] constexpr bool almost_eq(T value0, std::type_identity_t<T> value1) noexcept {
+	[[nodiscard]] constexpr bool almost_eq(T value0, T value1) noexcept {
 		if constexpr (std::floating_point<T>) {
 			const T scale = std::abs(value0) + std::abs(value1);
 			// To account for precision loss, take reciprocal of `scale` if it is less than 1
@@ -20,7 +19,7 @@ namespace xieite {
 	}
 
 	template<xieite::is_arith T>
-	[[nodiscard]] constexpr bool almost_eq(T value0, std::type_identity_t<T> value1, std::type_identity_t<T> epsilon) noexcept {
+	[[nodiscard]] constexpr bool almost_eq(T value0, T value1, T epsilon) noexcept {
 		return xieite::diff(value0, value1) <= xieite::abs(epsilon);
 	}
 }

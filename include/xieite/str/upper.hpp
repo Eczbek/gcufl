@@ -7,8 +7,9 @@
 #include <string>
 #include "../math/bit_size.hpp"
 #include "../math/sign_cast.hpp"
-#include "../meta/is_ch.hpp"
-#include "../str/chars.hpp"
+#include "../meta/end.hpp"
+#include "../str/ch.hpp"
+#include "../trait/is_ch.hpp"
 
 namespace xieite {
 	template<xieite::is_ch Ch = char>
@@ -17,16 +18,17 @@ namespace xieite {
 		static constexpr Lookup lookup = ([] -> Lookup {
 			Lookup lookup;
 			std::ranges::iota(lookup, '\0');
-			for (std::size_t i = 0; i < xieite::chars::alphabet_size; ++i) {
-				lookup[xieite::sign_cast<std::size_t>(xieite::chars::lower[i])] = static_cast<Ch>(xieite::chars::upper[i]);
+			for (std::size_t i = 0; i < xieite::ch::alphabet_size; ++i) {
+				lookup[xieite::sign_cast<std::size_t>(xieite::ch::lower[i])] = static_cast<Ch>(xieite::ch::upper[i]);
 			}
 			return lookup;
 		})();
 		return lookup[xieite::sign_cast<std::size_t>(c)];
 	}
 
-	template<typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<Ch>>
-	[[nodiscard]] constexpr std::basic_string<Ch, Traits, Alloc> upper(std::basic_string<Ch, Traits, Alloc> str) noexcept {
+	template<typename Ch = char, typename Traits = std::char_traits<Ch>, typename Alloc = std::allocator<Ch>, xieite::end...,
+		typename Str= std::basic_string<Ch, Traits, Alloc>>
+	[[nodiscard]] constexpr Str upper(Str str) noexcept {
 		for (Ch& c : str) {
 			c = xieite::upper(c);
 		}

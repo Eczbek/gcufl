@@ -2,9 +2,9 @@
 
 #include <concepts>
 #include <functional>
-#include "../meta/is_dur.hpp"
 #include "../pp/fwd.hpp"
 #include "../sys/thread_intv.hpp"
+#include "../trait/is_dur.hpp"
 
 namespace xieite {
 	struct thread_timeout {

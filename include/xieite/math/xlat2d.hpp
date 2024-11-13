@@ -2,7 +2,7 @@
 
 #include "../math/poly2d.hpp"
 #include "../math/pt2d.hpp"
-#include "../meta/is_linear2d.hpp"
+#include "../trait/is_linear2d.hpp"
 
 namespace xieite {
 	template<typename T = double>
@@ -10,9 +10,9 @@ namespace xieite {
 		return xieite::pt2d<T>(pt.x + diff.x, pt.y + diff.y);
 	}
 
-	template<typename T = double, xieite::is_linear2d<T> L>
-	[[nodiscard]] constexpr L xlat2d(const L& line, xieite::pt2d<T> diff) noexcept {
-		return L(xieite::xlat2d(line.a, diff), xieite::xlat2d(line.b, diff));
+	template<typename T = double, xieite::is_linear2d<T> Line>
+	[[nodiscard]] constexpr Line xlat2d(const Line& line, xieite::pt2d<T> diff) noexcept {
+		return Line(xieite::xlat2d(line.a, diff), xieite::xlat2d(line.b, diff));
 	}
 
 	template<typename T = double>

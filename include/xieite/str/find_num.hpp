@@ -6,8 +6,8 @@
 #include <type_traits>
 #include "../math/abs.hpp"
 #include "../math/ssize.hpp"
-#include "../meta/is_arith.hpp"
 #include "../str/str_num_config.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>

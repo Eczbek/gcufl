@@ -5,18 +5,16 @@
 #include <concepts>
 #include <functional>
 #include <limits>
-#include <type_traits>
-#include "../meta/is_arith.hpp"
 #include "../math/neg.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>
-	struct num : std::type_identity<T> {
+	struct num {
 	public:
-		T value;
+		using type = T;
 
-		explicit(false) constexpr num(T value = 0) noexcept
-		: value(value) {}
+		T value = 0;
 
 		explicit constexpr operator T() const noexcept {
 			return this->value;

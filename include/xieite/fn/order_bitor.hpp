@@ -1,7 +1,7 @@
 #pragma once
 
 #include <compare>
-#include "../meta/is_order.hpp"
+#include "../trait/is_order.hpp"
 
 namespace xieite::order_bitor {
 	template<xieite::is_order Order>

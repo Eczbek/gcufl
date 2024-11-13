@@ -4,8 +4,8 @@
 #include <cstddef>
 #include <memory>
 #include <utility>
-#include "../meta/is_triv_dtor.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/is_triv_dtor.hpp"
 
 namespace xieite {
 	template<xieite::is_triv_dtor T>

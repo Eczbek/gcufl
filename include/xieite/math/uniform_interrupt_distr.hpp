@@ -9,11 +9,11 @@
 #include "../math/betw.hpp"
 #include "../math/diff.hpp"
 #include "../math/intv.hpp"
-#include "../math/limits.hpp"
 #include "../math/merge_intv.hpp"
+#include "../math/minmax.hpp"
 #include "../math/uniform_distr.hpp"
-#include "../meta/is_arith.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>
@@ -22,7 +22,7 @@ namespace xieite {
 		template<std::ranges::input_range R>
 		requires(std::convertible_to<std::ranges::range_value_t<R>, xieite::intv<T>>)
 		uniform_interrupt_distr(xieite::intv<T> intv, R&& interrupts) {
-			const auto [min, max] = xieite::limits(intv.start, intv.end);
+			const auto [min, max] = xieite::minmax(intv.start, intv.end);
 			T upper = max;
 			for (auto [start, end] : xieite::merge_intv(XIEITE_FWD(interrupts))) {
 				if (!xieite::betw(start, min, max) || !xieite::betw(end, min, max)) {

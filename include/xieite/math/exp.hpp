@@ -4,7 +4,7 @@
 #include "../ctnr/set_cp_assign.hpp"
 #include "../ctnr/set_mv_assign.hpp"
 #include "../math/pow.hpp"
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>

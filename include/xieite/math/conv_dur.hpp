@@ -2,7 +2,7 @@
 
 #include <chrono>
 #include <tuple>
-#include "../meta/is_dur.hpp"
+#include "../trait/is_dur.hpp"
 
 namespace xieite {
 	template<xieite::is_dur T, xieite::is_dur... Us>

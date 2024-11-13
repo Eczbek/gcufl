@@ -3,9 +3,9 @@
 #include <algorithm>
 #include <iterator>
 #include <ranges>
-#include "../meta/is_invoc.hpp"
-#include "../meta/is_nothrow_invoc.hpp"
-#include "../meta/is_nothrow_range.hpp"
+#include "../trait/is_invoc.hpp"
+#include "../trait/is_nothrow_invoc.hpp"
+#include "../trait/is_nothrow_range.hpp"
 
 namespace xieite {
 	template<std::ranges::bidirectional_range R, xieite::is_invoc<bool(std::ranges::range_common_reference_t<R>)> F>

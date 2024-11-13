@@ -10,8 +10,8 @@
 #include "../fn/unroll.hpp"
 #include "../math/hash_combine.hpp"
 #include "../meta/cond.hpp"
-#include "../meta/is_hashable.hpp"
 #include "../pp/fn.hpp"
+#include "../trait/is_hashable.hpp"
 
 template<typename F, typename... Args>
 requires(std::invocable<F, Args...>)

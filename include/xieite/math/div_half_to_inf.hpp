@@ -2,13 +2,12 @@
 
 #include <cmath>
 #include <concepts>
-#include <type_traits>
 #include "../math/sign.hpp"
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>
-	[[nodiscard]] constexpr T div_half_to_inf(T dividend, std::type_identity_t<T> divisor) noexcept {
+	[[nodiscard]] constexpr T div_half_to_inf(T dividend, T divisor) noexcept {
 		if constexpr (std::floating_point<T>) {
 			const T result = dividend / divisor;
 			return std::floor(result) + (result < 0) + (std::fmod(std::abs(result), 1) >= 0.5) * xieite::sign(result);

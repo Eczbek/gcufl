@@ -5,7 +5,7 @@
 #include <type_traits>
 #include "../math/pt2d.hpp"
 #include "../math/almost_eq.hpp"
-#include "../meta/is_arith.hpp"
+#include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith>
