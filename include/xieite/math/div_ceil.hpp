@@ -7,7 +7,7 @@
 
 namespace xieite {
 	template<xieite::is_arith T>
-	[[nodiscard]] constexpr T div_up(T dividend, T divisor) {
+	[[nodiscard]] constexpr T div_ceil(T dividend, T divisor) {
 		if constexpr (std::floating_point<T>) {
 			return std::ceil(dividend / divisor);
 		} else {

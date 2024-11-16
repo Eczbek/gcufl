@@ -27,7 +27,7 @@
 #include "../math/ssize.hpp"
 #include "../math/sub_overflow.hpp"
 #include "../meta/try_unsign.hpp"
-#include "../str/str_num_config.hpp"
+#include "../str/str_num_cfg.hpp"
 #include "../trait/is_arith.hpp"
 
 namespace xieite {
@@ -37,7 +37,7 @@ namespace xieite {
 		using type = T;
 
 		template<std::integral U = int>
-		explicit(false) constexpr big_int(U value = 0) noexcept
+		[[nodiscard]] explicit(false) constexpr big_int(U value = 0) noexcept
 		: neg(xieite::neg(value)) {
 			xieite::try_unsign<U> abs = xieite::abs(value);
 			do {
@@ -51,7 +51,7 @@ namespace xieite {
 		}
 
 		template<typename U>
-		explicit constexpr big_int(const xieite::big_int<U>& value) noexcept
+		[[nodiscard]] explicit constexpr big_int(const xieite::big_int<U>& value) noexcept
 		: neg(value.neg) {
 			if constexpr (sizeof(T) == sizeof(U)) {
 				this->data = value.data;
@@ -79,12 +79,12 @@ namespace xieite {
 
 		template<std::ranges::input_range R>
 		requires(std::same_as<std::ranges::range_value_t<R>, T>)
-		explicit constexpr big_int(R&& range, bool neg = false) noexcept
+		[[nodiscard]] explicit constexpr big_int(R&& range, bool neg = false) noexcept
 		: data(std::ranges::begin(range), std::ranges::end(range)), neg(neg) {
 			this->trim();
 		}
 
-		explicit(false) constexpr big_int(std::string_view str, xieite::ssize radix = 10, xieite::str_num_config config = {}) noexcept
+		[[nodiscard]] explicit(false) constexpr big_int(std::string_view str, xieite::ssize radix = 10, xieite::str_num_cfg config = {}) noexcept
 		: neg(false) {
 			*this = 0;
 			if (!radix) {
@@ -612,7 +612,7 @@ namespace xieite {
 			return this->log(xieite::big_int<T>(base));
 		}
 
-		[[nodiscard]] constexpr std::string str(xieite::ssize radix = 10, xieite::str_num_config config = {}) const noexcept {
+		[[nodiscard]] constexpr std::string str(xieite::ssize radix = 10, xieite::str_num_cfg config = {}) const noexcept {
 			if (!*this || !radix) {
 				return std::string(1, config.digits[0]);
 			}

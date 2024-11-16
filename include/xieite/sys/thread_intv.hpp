@@ -10,7 +10,7 @@ namespace xieite {
 	struct thread_intv {
 	public:
 		template<std::invocable<> F, xieite::is_dur Dur>
-		thread_intv(F&& fn, Dur dur) noexcept
+		[[nodiscard]] thread_intv(F&& fn, Dur dur) noexcept
 		: loop([&fn, dur] -> void {
 			static bool first = true;
 			if (first) {

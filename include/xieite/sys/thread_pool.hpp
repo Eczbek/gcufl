@@ -14,7 +14,7 @@
 namespace xieite {
 	struct thread_pool {
 	public:
-		thread_pool(std::size_t threads = std::thread::hardware_concurrency()) noexcept {
+		[[nodiscard]] explicit thread_pool(std::size_t threads = std::thread::hardware_concurrency()) noexcept {
 			this->set_threads(threads);
 		}
 

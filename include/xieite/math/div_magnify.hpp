@@ -7,7 +7,7 @@
 
 namespace xieite {
 	template<xieite::is_arith T>
-	[[nodiscard]] constexpr T div_to_inf(T dividend, T divisor) noexcept {
+	[[nodiscard]] constexpr T div_magnify(T dividend, T divisor) noexcept {
 		if constexpr (std::floating_point<T>) {
 			return std::ceil(dividend / divisor) - ((dividend < 0) != (divisor < 0));
 		} else {

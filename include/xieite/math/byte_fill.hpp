@@ -9,7 +9,7 @@ namespace xieite {
 		unsigned char value;
 
 		template<std::integral T>
-		explicit constexpr byte_fill(T value) noexcept
+		[[nodiscard]] explicit constexpr byte_fill(T value) noexcept
 		: value(static_cast<unsigned char>(value)) {}
 
 		template<typename T>

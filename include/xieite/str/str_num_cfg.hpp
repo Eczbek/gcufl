@@ -5,7 +5,7 @@
 #include "../str/ch.hpp"
 
 namespace xieite {
-	struct str_num_config {
+	struct str_num_cfg {
 		std::string_view digits = xieite::ch::alphanum;
 		std::string_view neg = "-";
 		std::string_view pos = "+";

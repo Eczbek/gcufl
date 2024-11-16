@@ -7,11 +7,11 @@
 #include <string_view>
 #include "../ctnr/make_sparse_array.hpp"
 #include "../math/sign_cast.hpp"
-#include "../str/upper.hpp"
+#include "../str/uppercase.hpp"
 
 namespace xieite {
 	template<std::integral T = int, typename Ch = char, typename Traits = std::char_traits<Ch>>
-	[[nodiscard]] constexpr T from_roman(std::basic_string_view<Ch, Traits> str) noexcept {
+	[[nodiscard]] constexpr T from_roman(std::basic_string_view<Ch, Traits> strv) noexcept {
 		static constexpr auto numerals = xieite::make_sparse_array<Ch, T>({
 			{ 'I', 1 },
 			{ 'V', 5 },
@@ -22,16 +22,16 @@ namespace xieite {
 			{ 'M', 1000 }
 		});
 		T result = 0;
-		if (!str.size() || ((str.size() == 1) && (xieite::upper(str[0]) == "N"))) {
+		if (!strv.size() || ((strv.size() == 1) && (xieite::uppercase(strv[0]) == "N"))) {
 			return result;
 		}
 		T prev = 0;
-		for (Ch c : std::views::reverse(str)) {
-			const T numeral = numerals[xieite::sign_cast<std::size_t>(xieite::upper(c))];
+		for (Ch c : std::views::reverse(strv)) {
+			const T numeral = numerals[xieite::sign_cast<std::size_t>(xieite::uppercase(c))];
 			if (!numeral) {
 				continue;
 			}
-			result = (str < prev) ? (result - numeral) : (result + numeral);
+			result = (strv < prev) ? (result - numeral) : (result + numeral);
 			prev = numeral;
 		}
 		return result;

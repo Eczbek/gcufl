@@ -7,7 +7,7 @@
 
 namespace xieite {
 	template<xieite::is_arith T>
-	[[nodiscard]] constexpr T div_half_to_zero(T dividend, T divisor) noexcept {
+	[[nodiscard]] constexpr T div_trunc_half(T dividend, T divisor) noexcept {
 		if constexpr (std::floating_point<T>) {
 			const T result = dividend / divisor;
 			return std::floor(result) + (result < 0) + (std::fmod(std::abs(result), 1) > 0.5) * xieite::sign(result);

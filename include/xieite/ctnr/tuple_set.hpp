@@ -16,7 +16,7 @@ namespace xieite {
 	template<template<typename> typename Ctnr, typename K, typename... Ks>
 	struct tuple_set<Ctnr, std::tuple<K, Ks...>> {
 	public:
-		constexpr tuple_set(std::initializer_list<std::pair<K, xieite::tuple_set<Ctnr, std::tuple<Ks...>>>> list = {}) noexcept
+		[[nodiscard]] constexpr tuple_set(std::initializer_list<std::pair<K, xieite::tuple_set<Ctnr, std::tuple<Ks...>>>> list = {}) noexcept
 		: set(list.begin(), list.end()) {}
 
 		template<std::convertible_to<std::tuple<K, Ks...>> KsRef>
@@ -47,7 +47,7 @@ namespace xieite {
 	template<template<typename> typename Ctnr, typename Key>
 	struct tuple_set<Ctnr, std::tuple<Key>> {
 	public:
-		constexpr tuple_set(std::initializer_list<Key> list = {}) noexcept
+		[[nodiscard]] constexpr tuple_set(std::initializer_list<Key> list = {}) noexcept
 		: set(list.begin(), list.end()) {}
 
 		template<std::convertible_to<std::tuple<Key>> KRef>

@@ -8,12 +8,12 @@
 #include "../math/pow.hpp"
 #include "../math/ssize.hpp"
 #include "../math/split_bool.hpp"
-#include "../str/str_num_config.hpp"
+#include "../str/str_num_cfg.hpp"
 #include "../trait/is_arith.hpp"
 
 namespace xieite {
 	template<xieite::is_arith T>
-	[[nodiscard]] constexpr T parse_num(std::string_view str, std::conditional_t<std::floating_point<T>, xieite::ssize, T> radix = 10, xieite::str_num_config config = {}) noexcept {
+	[[nodiscard]] constexpr T parse_num(std::string_view str, std::conditional_t<std::floating_point<T>, xieite::ssize, T> radix = 10, xieite::str_num_cfg config = {}) noexcept {
 		if (!radix) {
 			return 0;
 		}

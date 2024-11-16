@@ -4,7 +4,6 @@
 #include <bitset>
 #include <concepts>
 #include "../math/bit_size.hpp"
-#include "../meta/end.hpp"
 #include "../meta/try_unsign.hpp"
 
 namespace xieite {
@@ -16,10 +15,9 @@ namespace xieite {
 		return result;
 	}
 
-	template<std::integral T, std::size_t size,
-		xieite::end...,
-		std::size_t bits = xieite::bit_size<T> * size>
-	[[nodiscard]] constexpr std::bitset<bits> bit_join(const std::array<T, size>& values) noexcept {
+	template<std::integral T, std::size_t size>
+	[[nodiscard]] constexpr std::bitset<xieite::bit_size<T> * size> bit_join(const std::array<T, size>& values) noexcept {
+		static constexpr std::size_t bits = xieite::bit_size<T> * size;
 		std::bitset<bits> result;
 		for (T value : values) {
 			result = (result >> xieite::bit_size<T>) | (std::bitset<bits>(static_cast<xieite::try_unsign<T>>(value)) << (bits - xieite::bit_size<T>));

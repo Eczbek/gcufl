@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../math/minmax.hpp"
 #include "../math/mod.hpp"
 #include "../trait/is_arith.hpp"
 
