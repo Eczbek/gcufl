@@ -268,6 +268,7 @@
 #include "./str/parse_num.hpp"
 #include "./str/quot.hpp"
 #include "./str/radiotelephony_spelling_alphabet.hpp"
+#include "./str/static_str.hpp"
 #include "./str/str_after.hpp"
 #include "./str/str_before.hpp"
 #include "./str/str_betw.hpp"

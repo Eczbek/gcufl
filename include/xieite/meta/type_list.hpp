@@ -144,8 +144,8 @@ namespace xieite {
 		template<std::size_t start0, std::size_t end0, std::size_t start1, std::size_t end1>
 		using swap_lists =
 			xieite::type_list<Ts...>
-			::rplc_list<start0, end0, type_list::slice<start1, end1>>
-			::template rplc_list<start1, end1, type_list::slice<start0, end0>>;
+			::rplc_list<start0, end0, xieite::type_list<Ts...>::slice<start1, end1>>
+			::template rplc_list<start1, end1, xieite::type_list<Ts...>::slice<start0, end0>>;
 
 		template<std::size_t... idxs>
 		using arrange = xieite::type_list<xieite::type_list<Ts...>::at<idxs>...>;
@@ -154,11 +154,11 @@ namespace xieite {
 		using filter =
 			xieite::fold<
 				[]<typename T, typename List> {
-					return std::conditional_t<
-						xieite::is_satisf<T, cond>,
-						typename List::template append<T>,
-						List
-					>();
+					if constexpr (xieite::is_satisf<T, cond>) {
+						return typename List::template append<T>();
+					} else {
+						return List();
+					}
 				},
 				xieite::type_list<>,
 				Ts...
@@ -168,11 +168,11 @@ namespace xieite {
 		using dedup =
 			xieite::fold<
 				[]<typename T, typename List> {
-					return std::conditional_t<
-						!List::template has<T, comp>,
-						typename List::template append<T>,
-						List
-					>();
+					if constexpr (!List::template has<T, comp>) {
+						return typename List::template append<T>();
+					} else {
+						return List();
+					}
 				},
 				xieite::type_list<>,
 				Ts...
@@ -194,8 +194,12 @@ namespace xieite {
 		using xform = decltype(xieite::unroll<sizeof...(Ts) / arity>([]<std::size_t... i> {
 			return type_list<
 				typename decltype(
-					type_list::template slice<arity * i, arity * (i + 1)>
-					::template append_list<type_list::template slice<0, arity * i>>
+					xieite::type_list<Ts...>
+					::template slice<arity * i, arity * (i + 1)>
+					::template append_list<
+						xieite::type_list<Ts...>
+						::template slice<0, arity * i>
+					>
 					::apply(fn)
 				)::type...
 			>();
@@ -206,25 +210,28 @@ namespace xieite {
 		using xform_flat = decltype(xieite::unroll<sizeof...(Ts) / arity>([]<std::size_t... i> {
 			return xieite::fold<
 				[]<typename Index, typename> {
-					return type_list
+					return xieite::type_list<Ts...>
 					::template slice<arity * Index::value, arity * (Index::value + 1)>
-					::template append_list<type_list::template slice<0, arity * Index::value>>
+					::template append_list<
+						xieite::type_list<Ts...>
+						::template slice<0, arity * Index::value>
+					>
 					::apply(fn);
 				},
 				type_list<>,
-				Ts...
+				xieite::value<i>...
 			>();
 		}))::type;
 
 		template<typename... Us>
 		requires(sizeof...(Ts) == sizeof...(Us))
 		using zip = decltype(xieite::unroll<Ts...>([]<std::size_t... i> {
-			return type_list<type_list<type_list::at<i>, Us>...>();
+			return type_list<type_list<xieite::type_list<Ts...>::at<i>, Us>...>();
 		}));
 
 		template<typename List>
 		using zip_list = decltype(([]<template<typename...> typename M, typename... Us>(const M<Us...>&) {
-			return type_list::zip<Us...>();
+			return xieite::type_list<Ts...>::zip<Us...>();
 		})(std::declval<List>()));
 	};
 }
