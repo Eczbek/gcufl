@@ -8,7 +8,7 @@ namespace xieite {
 	struct proc_guard {
 	public:
 		template<std::invocable<> F, auto = [] {}>
-		[[nodiscard]] explicit(false) proc_guard(F&& fn) noexcept {
+		[[nodiscard]] proc_guard(F&& fn) noexcept {
 			struct guard {
 				const xieite::fn<void()> fn;
 				bool released = false;

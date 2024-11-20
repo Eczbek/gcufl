@@ -31,7 +31,7 @@ namespace xieite {
 		: a(a), b(std::cos(angle), std::sin(angle)) {}
 
 		template<typename U>
-		[[nodiscard]] explicit(false) constexpr operator xieite::ray2d<U>() const noexcept {
+		[[nodiscard]] constexpr operator xieite::ray2d<U>() const noexcept {
 			return xieite::ray2d<U>(this->a, this->b);
 		}
 

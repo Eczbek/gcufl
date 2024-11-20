@@ -277,6 +277,7 @@
 #include "./str/str_num_cfg.hpp"
 #include "./str/str_repeat.hpp"
 #include "./str/str_rplc.hpp"
+#include "./str/str_size.hpp"
 #include "./str/str_split.hpp"
 #include "./str/str_trunc.hpp"
 #include "./str/substr.hpp"
