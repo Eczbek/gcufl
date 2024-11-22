@@ -2,7 +2,7 @@
 
 namespace xieite {
 	template<typename T>
-	[[nodiscard]] constexpr T& temp(T&& value = {}) noexcept {
+	[[nodiscard]] constexpr T& tmp(T&& value = {}) noexcept {
 		return { value }; // :)
 	}
 }
