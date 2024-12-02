@@ -128,7 +128,6 @@
 #include "./math/pt2d.hpp"
 #include "./math/poly2d.hpp"
 #include "./math/pow.hpp"
-#include "./math/pow_of_2.hpp"
 #include "./math/prime.hpp"
 #include "./math/range.hpp"
 #include "./math/ray2d.hpp"
