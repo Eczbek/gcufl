@@ -13,36 +13,38 @@
 #include "../pp/fn.hpp"
 #include "../trait/is_hashable.hpp"
 
-template<typename F, typename... Args>
-requires(std::invocable<F, Args...>)
-struct memo {
-	F fn;
-	std::tuple<Args...> args;
-
-	[[nodiscard]] constexpr memo(const F& fn, const std::tuple<Args...>& args) noexcept
-	: fn(fn), args(args) {}
-
-	[[nodiscard]] friend bool operator==(const memo<F, Args...>&, const memo<F, Args...>&) = default;
-
-	template<typename... OtherArgs>
-	[[nodiscard]] friend bool operator==(const memo<F, Args...>& left, const memo<F, OtherArgs...>& right) noexcept {
-		return (left.fn == right.fn) && (left.args == right.args);
-	}
-};
-
-struct memo_hash {
-	using is_transparent = void;
-
+namespace XIEITE_DETAIL {
 	template<typename F, typename... Args>
-	[[nodiscard]] static std::size_t operator()(const memo<F, Args...>& memo) noexcept(false) {
-		return xieite::unroll<Args...>([&memo]<std::size_t... i> -> std::size_t {
-			return xieite::hash_combine(
-				xieite::cond<xieite::is_hashable<F>>(std::hash<F>(), XIEITE_FN(0))(memo.fn),
-				std::hash<std::decay_t<std::tuple_element_t<i, std::tuple<Args...>>>>()(std::get<i>(memo.args))...
-			);
-		});
-	}
-};
+	requires(std::invocable<F, Args...>)
+	struct memo {
+		F fn;
+		std::tuple<Args...> args;
+
+		[[nodiscard]] constexpr memo(const F& fn, const std::tuple<Args...>& args) noexcept
+		: fn(fn), args(args) {}
+
+		[[nodiscard]] friend bool operator==(const memo<F, Args...>&, const memo<F, Args...>&) = default;
+
+		template<typename... OtherArgs>
+		[[nodiscard]] friend bool operator==(const memo<F, Args...>& left, const memo<F, OtherArgs...>& right) noexcept {
+			return (left.fn == right.fn) && (left.args == right.args);
+		}
+	};
+
+	struct memo_hash {
+		using is_transparent = void;
+
+		template<typename F, typename... Args>
+		[[nodiscard]] static std::size_t operator()(const memo<F, Args...>& memo) noexcept(false) {
+			return xieite::unroll<Args...>([&memo]<std::size_t... i> -> std::size_t {
+				return xieite::hash_combine(
+					xieite::cond<xieite::is_hashable<F>>(std::hash<F>(), XIEITE_FN(0))(memo.fn),
+					std::hash<std::decay_t<Args...[i]>>()(std::get<i>(memo.args))...
+				);
+			});
+		}
+	};
+}
 
 namespace xieite {
 	template<typename F, typename... Args>

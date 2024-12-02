@@ -45,14 +45,7 @@ namespace xieite {
 			::find<[]<typename U> requires(xieite::is_satisfd<comp, T, U>) {}>;
 
 		template<std::size_t idx>
-		requires(idx < sizeof...(Ts))
-		using at = decltype(xieite::unroll<Ts...>([]<std::size_t... i> {
-			return xieite::visitor(
-				[](xieite::value<i>) {
-					return std::type_identity<Ts>();
-				}...
-			)(xieite::value<idx>());
-		}))::type;
+		using at = Ts...[idx];
 
 		static constexpr auto apply(auto&& fn)
 		XIEITE_ARROW(XIEITE_FWD(fn).template operator()<Ts...>())
@@ -89,12 +82,12 @@ namespace xieite {
 		})(std::declval<List>()));
 
 		using rev = decltype(xieite::unroll<Ts...>([]<std::size_t... i> {
-			return std::type_identity<xieite::type_list<xieite::type_list<Ts...>::at<sizeof...(Ts) - i - 1>...>>();
+			return std::type_identity<xieite::type_list<Ts...[sizeof...(Ts) - i - 1]...>>();
 		}))::type;
 
 		template<std::size_t start, std::size_t end = sizeof...(Ts), auto = [] -> void {}> // Lambda argument is a temporary workaround for GCC
 		using slice = decltype(xieite::unroll<xieite::diff(start, end)>([]<std::size_t... i> {
-			return xieite::type_list<xieite::type_list<Ts...>::at<i + std::min(start, end)>...>();
+			return xieite::type_list<Ts...[i + std::min(start, end)]...>();
 		}));
 
 		template<std::size_t start, std::size_t end = start + 1>
@@ -138,8 +131,8 @@ namespace xieite {
 		template<std::size_t idx0, std::size_t idx1>
 		using swap =
 			xieite::type_list<Ts...>
-			::set<idx0, xieite::type_list<Ts...>::at<idx1>>
-			::template set<idx1, xieite::type_list<Ts...>::at<idx0>>;
+			::set<idx0, Ts...[idx1]>
+			::template set<idx1, Ts...[idx0]>;
 
 		template<std::size_t start0, std::size_t end0, std::size_t start1, std::size_t end1>
 		using swap_slices =
@@ -148,7 +141,7 @@ namespace xieite {
 			::template rplc_list<start1, end1, xieite::type_list<Ts...>::slice<start0, end0>>;
 
 		template<std::size_t... idxs>
-		using arrange = xieite::type_list<xieite::type_list<Ts...>::at<idxs>...>;
+		using arrange = xieite::type_list<Ts...[idxs]...>;
 
 		template<auto cond>
 		using filter =
@@ -231,7 +224,7 @@ namespace xieite {
 		template<typename... Us>
 		requires(sizeof...(Ts) == sizeof...(Us))
 		using zip = decltype(xieite::unroll<Ts...>([]<std::size_t... i> {
-			return xieite::type_list<xieite::type_list<xieite::type_list<Ts...>::at<i>, Us>...>();
+			return xieite::type_list<xieite::type_list<Ts...[i], Us>...>();
 		}));
 
 		template<typename List>
