@@ -2,12 +2,13 @@
 
 #include <chrono>
 #include <cstdint>
+#include <functional>
 #include "../math/pi.hpp"
 #include "../pp/fn.hpp"
 #include "../str/fixed_str.hpp"
 
 namespace xieite {
-	template<xieite::fixed_str type, auto to = [](auto x) { return x; }, auto from = [](auto x) { return x; }>
+	template<xieite::fixed_str type, auto to = std::identity(), auto from = std::identity()>
 	struct base_unit {
 		double value;
 
