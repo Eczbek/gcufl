@@ -93,6 +93,7 @@
 #include "./math/djb2.hpp"
 #include "./math/exp.hpp"
 #include "./math/exp_overflow.hpp"
+#include "./math/ext_bit_cast.hpp"
 #include "./math/factorial.hpp"
 #include "./math/farthest.hpp"
 #include "./math/fib.hpp"
