@@ -17,7 +17,7 @@
 #include <vector>
 #include "../ctnr/str_num_cfg.hpp"
 #include "../fn/order_op.hpp"
-#include "../fn/view_cmp_op.hpp"
+#include "../fn/range_cmp_op.hpp"
 #include "../math/abs.hpp"
 #include "../math/add_overflow.hpp"
 #include "../math/bit_size.hpp"
@@ -121,13 +121,13 @@ namespace xieite {
 
 		[[nodiscard]] friend constexpr std::strong_ordering operator<=>(const xieite::big_int<T>& l, const xieite::big_int<T>& r) noexcept {
 			using namespace xieite::order_op;
-			using namespace xieite::view_cmp_op;
+			using namespace xieite::range_cmp_op;
 			return (r.neg <=> l.neg)
-				|| (l.neg
+				| (l.neg
 					? ((r.data.size() <=> l.data.size())
-						|| (std::views::reverse(r) <=> std::views::reverse(l)))
+						| (std::views::reverse(r) <=> std::views::reverse(l)))
 					: ((l.data.size() <=> r.data.size())
-						|| (std::views::reverse(l) <=> std::views::reverse(r))));
+						| (std::views::reverse(l) <=> std::views::reverse(r))));
 		}
 
 		template<std::integral U>
