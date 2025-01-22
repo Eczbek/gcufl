@@ -5,7 +5,7 @@
 
 namespace xieite {
 	template<xieite::is_arith T>
-	[[nodiscard]] constexpr T ceil(T value, T step = 1) noexcept {
-		return xieite::div_ceil(value, step) * step;
+	[[nodiscard]] constexpr T ceil(T n, T step = 1) noexcept {
+		return xieite::div_ceil(n, step) * step;
 	}
 }

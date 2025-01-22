@@ -9,11 +9,9 @@
 #include <utility>
 #include "../fn/unroll.hpp"
 #include "../math/hash_combine.hpp"
-#include "../meta/cond.hpp"
-#include "../pp/fn.hpp"
 #include "../trait/is_hashable.hpp"
 
-namespace XIEITE_DETAIL {
+namespace XIEITE_DETAIL::memoize {
 	template<typename F, typename... Args>
 	requires(std::invocable<F, Args...>)
 	struct memo {
@@ -31,14 +29,20 @@ namespace XIEITE_DETAIL {
 		}
 	};
 
-	struct memo_hash {
+	struct hash {
 		using is_transparent = void;
 
 		template<typename F, typename... Args>
 		[[nodiscard]] static std::size_t operator()(const memo<F, Args...>& memo) noexcept(false) {
 			return xieite::unroll<Args...>([&memo]<std::size_t... i> -> std::size_t {
 				return xieite::hash_combine(
-					xieite::cond<xieite::is_hashable<F>>(std::hash<F>(), XIEITE_FN(0))(memo.fn),
+					([&memo] {
+						if constexpr (xieite::is_hashable<F>) {
+							return std::hash<F>()(memo.fn);
+						} else {
+							return 0;
+						}
+					})(),
 					std::hash<std::decay_t<Args...[i]>>()(std::get<i>(memo.args))...
 				);
 			});
@@ -57,7 +61,7 @@ namespace xieite {
 			&& std::equality_comparable<F>
 			&& (... && xieite::is_hashable<Args>)
 		) {
-			static std::unordered_map<memo<F, std::decay_t<Args>...>, std::invoke_result_t<F&, Args...>, memo_hash, std::ranges::equal_to> map;
+			static std::unordered_map<XIEITE_DETAIL::memoize::memo<F, std::decay_t<Args>...>, std::invoke_result_t<F&, Args...>, XIEITE_DETAIL::memoize::hash, std::ranges::equal_to> map;
 			const auto iterator = map.find(memo<F, const Args&...>(fn, std::tie(args...)));
 			if (iterator != map.end()) {
 				return iterator->second;

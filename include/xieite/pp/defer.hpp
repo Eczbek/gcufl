@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../pp/scan.hpp"
+#include "../pp/eat.hpp"
 
-#define XIEITE_DEFER(m) m XIEITE_SCAN()
+#define XIEITE_DEFER(...) __VA_ARGS__ XIEITE_EAT()

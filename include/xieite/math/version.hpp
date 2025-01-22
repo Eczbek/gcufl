@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <string>
 #include <utility>
-#include "../str/str_num.hpp"
+#include "../math/str_num.hpp"
 
 namespace xieite {
 	struct version {

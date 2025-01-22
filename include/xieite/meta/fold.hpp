@@ -1,18 +1,18 @@
 #pragma once
 
-#include <type_traits>
+#include "../meta/t.hpp"
 
-namespace XIEITE_DETAIL {
+namespace XIEITE_DETAIL::fold {
 	template<auto fn, typename T>
-	struct fold_helper {
+	struct impl {
 		using type = T;
 
 		template<typename U>
-		XIEITE_DETAIL::fold_helper<fn, decltype(fn.template operator()<U, T>())> operator->*(std::type_identity<U>) const;
+		XIEITE_DETAIL::fold::impl<fn, decltype(fn.template operator()<U, T>())> operator->*(xieite::t<U>) const;
 	};
 }
 
 namespace xieite {
 	template<auto fn, typename T, typename... Ts>
-	using fold = decltype((XIEITE_DETAIL::fold_helper<fn, T>()->*...->*std::type_identity<Ts>()))::type;
+	using fold = decltype((XIEITE_DETAIL::fold::impl<fn, T>()->*...->*xieite::t<Ts>()))::type;
 }

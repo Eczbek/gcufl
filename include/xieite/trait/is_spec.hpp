@@ -3,10 +3,8 @@
 #include <utility>
 
 namespace xieite {
-	template<typename T, template<typename...> typename M>
-	concept is_spec = requires {
-		([]<typename... Args>(const M<Args...>&) {})(std::declval<T>());
-	};
+	template<typename T, template<typename...> typename... Ms>
+	concept is_spec = (... && requires { ([]<typename... Args>(const Ms<Args...>&) {})(std::declval<T>()); });
 }
 
 // TODO: Remove after `std::specialization_of` is implemented

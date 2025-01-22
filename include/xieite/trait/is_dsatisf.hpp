@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../trait/is_satisf.hpp"
+#include "../trait/is_satisf_any.hpp"
 
 namespace xieite {
-	template<typename T, auto fn>
-	concept is_dsatisf = !xieite::is_satisf<T, fn>;
+	template<typename T, auto... fns>
+	concept is_dsatisf = !xieite::is_satisf_any<T, fns...>;
 }

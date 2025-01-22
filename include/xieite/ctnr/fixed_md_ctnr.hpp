@@ -1,17 +1,18 @@
 #pragma once
 
 #include <cstddef>
-#include <type_traits>
+#include "../meta/t.hpp"
+#include "../meta/v.hpp"
 
 namespace xieite {
 	template<template<typename, std::size_t> typename Ctnr, typename V, std::size_t... sizes>
-	using fixed_md_ctnr = decltype(([]<std::size_t... curr>(this auto self) {
+	using fixed_md_ctnr = decltype(([]<std::size_t... curr>(this auto self, xieite::v<curr>...) {
 		if constexpr (sizeof...(curr)) {
 			return ([self]<std::size_t first, std::size_t... rest> {
-				return std::type_identity<Ctnr<typename decltype(self.template operator()<rest...>())::type, first>>();
-			}).template operator()<curr...>();
+				return xieite::t<Ctnr<typename decltype(self(xieite::v<rest>()...))::type, first>>();
+			})(xieite::v<curr>()...);
 		} else {
-			return std::type_identity<V>();
+			return xieite::t<V>();
 		}
-	}).template operator()<sizes...>())::type;
+	})(xieite::v<sizes>()...))::type;
 }

@@ -3,9 +3,9 @@
 #include <chrono>
 #include <cstdint>
 #include <functional>
+#include "../ctnr/fixed_str.hpp"
 #include "../math/pi.hpp"
 #include "../pp/fn.hpp"
-#include "../str/fixed_str.hpp"
 
 namespace xieite {
 	template<xieite::fixed_str type, auto to = std::identity(), auto from = std::identity()>

@@ -1,8 +1,9 @@
 #pragma once
 
-#include <type_traits>
+#include "../trait/is_lref.hpp"
+#include "../trait/is_rref.hpp"
 
 namespace xieite {
 	template<typename T>
-	concept is_ref = std::is_reference_v<T>;
+	concept is_ref = xieite::is_lref<T> || xieite::is_rref<T>;
 }

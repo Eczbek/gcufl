@@ -3,11 +3,11 @@
 #include <cstddef>
 #include "../meta/state.hpp"
 
-namespace XIEITE_DETAIL {
-	using type_id_state = xieite::state<>;
+namespace XIEITE_DETAIL::type_id {
+	using state = xieite::state<>;
 }
 
 namespace xieite {
 	template<typename>
-	inline constexpr std::size_t type_id = XIEITE_DETAIL::type_id_state::advance();
+	inline constexpr std::size_t type_id = XIEITE_DETAIL::type_id::state::advance();
 }

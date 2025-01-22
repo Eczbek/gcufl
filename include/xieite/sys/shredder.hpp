@@ -4,11 +4,11 @@
 #include <cstddef>
 #include <memory>
 #include <utility>
+#include "../meta/has_trivial_dtor.hpp"
 #include "../pp/fwd.hpp"
-#include "../trait/is_triv_dtor.hpp"
 
 namespace xieite {
-	template<xieite::is_triv_dtor T>
+	template<xieite::has_trivial_dtor T>
 	struct shredder {
 	public:
 		[[nodiscard]] constexpr shredder() noexcept {
@@ -27,9 +27,9 @@ namespace xieite {
 
 		constexpr void shred() noexcept {
 			if !consteval {
-				const auto byte = reinterpret_cast<volatile unsigned char*>(std::addressof(this->value));
+				const auto byte = reinterpret_cast<volatile char*>(std::addressof(this->value));
 				for (std::size_t i = 0; i < sizeof(T); ++i) {
-					byte[i] = static_cast<unsigned char>(0);
+					byte[i] = '\0';
 				}
 			}
 		}

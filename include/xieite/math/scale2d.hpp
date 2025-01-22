@@ -1,9 +1,9 @@
 #pragma once
 
 #include <type_traits>
-#include "../trait/is_linear2d.hpp"
 #include "../math/poly2d.hpp"
 #include "../math/pt2d.hpp"
+#include "../trait/is_linear2d.hpp"
 
 namespace xieite {
 	template<typename T = double>

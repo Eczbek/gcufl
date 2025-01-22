@@ -4,13 +4,14 @@
 #include <tuple>
 #include <type_traits>
 #include "../meta/any.hpp"
+#include "../meta/tuple_size.hpp"
 #include "../trait/is_tuple_like.hpp"
 
 namespace xieite {
 	template<typename T>
 	inline constexpr std::size_t arity = ([] -> std::size_t {
 		if constexpr (xieite::is_tuple_like<T>) {
-			return std::tuple_size_v<T>;
+			return xieite::tuple_size<T>;
 		} else if constexpr (std::is_aggregate_v<T>) {
 			return ([](this auto self, std::size_t offset = 0, auto... curr) -> std::size_t {
 				if constexpr (requires { T { curr..., xieite::any() }; } || requires { T { curr..., { xieite::any(), xieite::any() } }; }) {
@@ -44,4 +45,4 @@ namespace xieite {
 	})();
 }
 
-// Stolen from lapinozz (https://github.com/lapinozz)
+// Originally stolen from lapinozz (https://github.com/lapinozz)
