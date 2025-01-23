@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../meta/collapse.hpp"
+#include "../trait/collapse.hpp"
 
 namespace xieite {
 	template<typename T, typename U>

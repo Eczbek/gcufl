@@ -5,24 +5,24 @@
 #if XIEITE_LANG_LEAST(CPP, 2023)
 #	include <utility>
 
-#	define XIEITE_UNREACHABLE() (::std::unreachable())
+#	define XIEITE_UNREACH() (::std::unreachable())
 #elif XIEITE_LANG_LEAST(C, 2023)
 #	include <stddef.h>
 
-#	define XIEITE_UNREACHABLE() (unreachable())
+#	define XIEITE_UNREACH() (unreachable())
 #else
 #	include "../pp/cplr.hpp"
 
 #	if XIEITE_CPLR_TYPE_GCC || XIEITE_CPLR_TYPE_CLANG
-#		define XIEITE_UNREACHABLE() (__builtin_unreachable())
+#		define XIEITE_UNREACH() (__builtin_unreachable())
 #	elif XIEITE_CPLR_TYPE_MSVC
-#		define XIEITE_UNREACHABLE() (__assume(false))
+#		define XIEITE_UNREACH() (__assume(false))
 #	else
 #		include "../pp/attr.hpp"
 
-XIEITE_ATTR_NORET inline void XIEITE_DETAIL_unreachable() {}
+XIEITE_ATTR_NORET inline void XIEITE_DETAIL_unreach() {}
 
-#		define XIEITE_UNREACHABLE() (XIEITE_DETAIL_unreachable())
+#		define XIEITE_UNREACH() (XIEITE_DETAIL_unreach())
 #	endif
 #endif
 

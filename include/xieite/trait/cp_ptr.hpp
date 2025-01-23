@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../trait/add_ptr.hpp"
-#include "../meta/get_ptr.hpp"
+#include "../trait/get_ptr.hpp"
 #include "../trait/rm_ptr.hpp"
 
 namespace xieite {
