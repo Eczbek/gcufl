@@ -6,6 +6,7 @@
 #include <type_traits>
 #include "../fn/unroll.hpp"
 #include "../math/diff.hpp"
+#include "../meta/end.hpp"
 #include "../meta/fold.hpp"
 #include "../meta/t.hpp"
 #include "../meta/v.hpp"
@@ -91,6 +92,7 @@ namespace xieite {
 			return xieite::type_list<Ts...>::prepend<Us...>();
 		})(std::declval<List>()));
 
+		template<xieite::end...>
 		using reverse = decltype(xieite::unroll<Ts...>([]<std::size_t... i> {
 			return xieite::t<xieite::type_list<xieite::type_list<Ts...>::at<(sizeof...(Ts) - i - 1)>...>>();
 		}))::type;
