@@ -4,8 +4,8 @@
 #include <tuple>
 #include <utility>
 #include "../fn/repeat.hpp"
-#include "../meta/has_noex_mv_assign.hpp"
-#include "../meta/has_noex_mv_ctor.hpp"
+#include "../trait/has_noex_mv_assign.hpp"
+#include "../trait/has_noex_mv_ctor.hpp"
 
 namespace xieite {
 	template<std::size_t n = 1, typename... Args>

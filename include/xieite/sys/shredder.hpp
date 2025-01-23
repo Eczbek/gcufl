@@ -4,8 +4,8 @@
 #include <cstddef>
 #include <memory>
 #include <utility>
-#include "../meta/has_trivial_dtor.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/has_trivial_dtor.hpp"
 
 namespace xieite {
 	template<xieite::has_trivial_dtor T>

@@ -3,10 +3,10 @@
 #include <concepts>
 #include <functional>
 #include <type_traits>
-#include "../meta/has_cp_ctor.hpp"
-#include "../meta/has_noex_cp_ctor.hpp"
 #include "../pp/fn.hpp"
 #include "../pp/fwd.hpp"
+#include "../trait/has_cp_ctor.hpp"
+#include "../trait/has_noex_cp_ctor.hpp"
 #include "../trait/is_noex_invoc.hpp"
 
 namespace xieite {

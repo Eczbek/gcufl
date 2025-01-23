@@ -48,6 +48,7 @@
 #include "./fn/any_true.hpp"
 #include "./fn/apply_array.hpp"
 #include "./fn/apply_as_tuple.hpp"
+#include "./fn/cast.hpp"
 #include "./fn/distr_args.hpp"
 #include "./fn/distr_args_recurs.hpp"
 #include "./fn/enum_op.hpp"

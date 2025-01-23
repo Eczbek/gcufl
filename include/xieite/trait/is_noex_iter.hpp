@@ -2,12 +2,12 @@
 
 #include <iterator>
 #include <utility>
-#include "../meta/has_noex_cp_assign.hpp"
-#include "../meta/has_noex_cp_ctor.hpp"
-#include "../meta/has_noex_default_ctor.hpp"
-#include "../meta/has_noex_dtor.hpp"
-#include "../meta/has_noex_mv_assign.hpp"
-#include "../meta/has_noex_mv_ctor.hpp"
+#include "../trait/has_noex_cp_assign.hpp"
+#include "../trait/has_noex_cp_ctor.hpp"
+#include "../trait/has_noex_default_ctor.hpp"
+#include "../trait/has_noex_dtor.hpp"
+#include "../trait/has_noex_mv_assign.hpp"
+#include "../trait/has_noex_mv_ctor.hpp"
 #include "../trait/is_noex_bool_testable.hpp"
 #include "../trait/is_noex_swap.hpp"
 

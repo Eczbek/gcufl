@@ -7,15 +7,15 @@
 #include <initializer_list>
 #include <ranges>
 #include <utility>
-#include "../meta/arity.hpp"
+#include "../fn/cast.hpp"
 #include "../math/bit_size.hpp"
 #include "../math/sign_cast.hpp"
-#include "../pp/lift.hpp"
+#include "../meta/arity.hpp"
 #include "../trait/is_invoc.hpp"
 #include "../trait/is_noex_invoc.hpp"
 
 namespace xieite {
-	template<std::integral K, typename V, std::ranges::input_range R = std::initializer_list<std::pair<K, V>>, xieite::is_invoc<V(std::ranges::range_common_reference_t<R>)> F = decltype(XIEITE_LIFT_ONE(static_cast<V>))>
+	template<std::integral K, typename V, std::ranges::input_range R = std::initializer_list<std::pair<K, V>>, xieite::is_invoc<V(std::ranges::range_common_reference_t<R>)> F = xieite::cast<V>>
 	[[nodiscard]] constexpr std::array<V, (1uz << xieite::bit_size<K>)> make_sparse_array(R&& entries, F&& fn = {})
 	noexcept(xieite::is_noex_invoc<F, V(std::ranges::range_common_reference_t<R>)>) {
 		static_assert(xieite::bit_size<K> <= 16, "key type must be reasonably small");
