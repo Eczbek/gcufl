@@ -1,15 +1,15 @@
 #pragma once
 
 #include <cstddef>
+#include <type_traits>
 #include "../trait/is_ch.hpp"
 
 namespace xieite {
-	template<xieite::is_ch Ch>
-	[[nodiscard]] constexpr std::size_t strlen(Ch* str) noexcept {
+	template<typename Str>
+	requires(std::is_pointer_v<Str> && xieite::is_ch<std::remove_pointer_t<Str>>)
+	[[nodiscard]] constexpr std::size_t strlen(Str str) noexcept {
 		std::size_t size = 0;
-		while (str[size]) {
-			++size;
-		}
+		while (str[size++]);
 		return size;
 	}
 
