@@ -6,6 +6,7 @@
 #include "../pp/diag.hpp"
 #include "../pp/fwd.hpp"
 #include "../pp/if.hpp"
+#include "../pp/unwrap.hpp"
 
 #define XIEITE_FN(...) []XIEITE_DETAIL_FN(0, __VA_ARGS__)
 #define XIEITE_FN_LOCAL(...) [&]XIEITE_DETAIL_FN(1, __VA_ARGS__)
