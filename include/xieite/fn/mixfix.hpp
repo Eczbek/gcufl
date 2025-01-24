@@ -15,157 +15,157 @@ namespace xieite {
 		using xieite::fn<Ret(Arg)>::fn;
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator->*(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator->*(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator*(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator*(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator/(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator/(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator%(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator%(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator+(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator+(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator-(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator-(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator<<(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator<<(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator>>(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator>>(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator<=>(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator<=>(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator<(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator<(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator<=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator<=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator>(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator>(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator>=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator>=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator==(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator==(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator!=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator!=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator&(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator&(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator^(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator^(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator|(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator|(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator&&(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator&&(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator||(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator||(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator*=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator*=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator/=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator/=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator%=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator%=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator+=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator+=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator-=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator-=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator<<=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator<<=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator>>=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator>>=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator&=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator&=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator^=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator^=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator|=(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator|=(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
 		template<std::convertible_to<Arg> ArgRef>
-		friend constexpr decltype(auto) operator,(auto&& self, ArgRef&& arg) noexcept(false) {
+		constexpr decltype(auto) operator,(this auto&& self, ArgRef&& arg) noexcept(false) {
 			return self(XIEITE_FWD(arg));
 		}
 
@@ -335,157 +335,157 @@ namespace xieite {
 			: parent(parent), value(XIEITE_FWD(l)) {}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator->*(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator->*(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator*(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator*(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator/(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator/(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator%(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator%(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator+(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator+(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator-(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator-(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator<<(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator<<(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator>>(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator>>(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator<=>(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator<=>(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator<(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator<(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator<=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator<=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator>(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator>(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator>=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator>=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator==(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator==(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator!=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator!=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator&(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator&(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator^(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator^(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator|(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator|(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator&&(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator&&(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator||(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator||(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator*=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator*=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator/=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator/=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator%=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator%=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator+=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator+=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator-=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator-=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator<<=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator<<=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator>>=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator>>=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator&=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator&=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator^=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator^=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator|=(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator|=(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
 			template<std::convertible_to<Arg1> ArgRef1>
-			friend constexpr decltype(auto) operator,(this auto&& self, ArgRef1&& r) noexcept(false) {
+			constexpr decltype(auto) operator,(this auto&& self, ArgRef1&& r) noexcept(false) {
 				return self.parent(self.value, XIEITE_FWD(r));
 			}
 
